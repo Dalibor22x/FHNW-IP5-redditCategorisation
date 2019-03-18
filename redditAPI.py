@@ -6,18 +6,6 @@ reddit = praw.Reddit(client_id='QS278a4Z1eWFBw',
                      user_agent='Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; en-en) AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4')
 
 
-def showReplies(replies):
-    if not replies:
-        print('Replies:')
-        for reply in replies:
-            # print('\t' + reply)
-            print(vars(reply))
-            print('--------------')
-            if not reply.replies:
-                showReplies(reply.replies)
-        print('End Replies -----')
-
-
 def printSubreddit(subredditName, limit=10):
     subreddit = reddit.subreddit(subredditName)
 
