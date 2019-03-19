@@ -14,6 +14,3 @@ class Post(object):
 
 
         return all_comments
-
-    def __call__(self):
-        pass

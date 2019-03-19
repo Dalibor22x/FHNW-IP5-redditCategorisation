@@ -16,6 +16,7 @@ def print_subreddit(subreddit_name, limit=10):
             print('Selftext: ' + submission.selftext)
             print('Score: ' + str(submission.score))
             print('ID: ' + str(submission.id))
+            # Add author
             print('URL: ' + submission.url)
             print('Comments:')
             submission.comments.replace_more(limit=None)
@@ -23,6 +24,7 @@ def print_subreddit(subreddit_name, limit=10):
                 print('Comment ID: ' + str(comment.id))
                 print('Parent ID: ' + str(comment.parent_id))
                 print(comment.body)
+                print('Score: ' + str(comment.score))
                 print('Comment Depth: ' + str(comment.depth))
                 print('-------')
             print('--------------')
@@ -37,8 +39,8 @@ def get_subreddit(subreddit_name, limit=10):
             post = Post(submission.title, submission.selftext, submission.score, submission.id, submission.url, submission.comments.list())
 
 def main():
-    # print_subreddit('netflix')
-    get_subreddit('netflix')
+    print_subreddit('netflix')
+    # get_subreddit('netflix')
 
 
 if __name__ == '__main__':
