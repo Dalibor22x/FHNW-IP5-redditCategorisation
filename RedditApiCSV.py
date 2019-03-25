@@ -42,7 +42,7 @@ def save_subreddit(subreddit_name, time_start, time_end, limit=None):
 
 
 
-        for submission in subreddit.new(limit=limit):
+        for submission in subreddit.hot(limit=limit):
             if not submission.stickied:
                 if time_end.timestamp() < submission.created_utc < time_start.timestamp():
                     # Check these in case author has been deleted in the mean time
