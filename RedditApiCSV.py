@@ -7,7 +7,7 @@ reddit = praw.Reddit(client_id='QS278a4Z1eWFBw',
                      user_agent='Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; en-en) AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4')
 
 
-def save_subreddit(subreddit_name, limit=10):
+def save_subreddit(subreddit_name, limit=10000):
     subreddit = reddit.subreddit(subreddit_name)
 
     listattributes = [
@@ -36,13 +36,27 @@ def save_subreddit(subreddit_name, limit=10):
         writer = csv.writer(csv_file, delimiter=';', quotechar='\"', quoting=csv.QUOTE_MINIMAL)
         writer.writerow(listattributes)
 
-        for submission in subreddit.hot(limit=limit):
+
+
+        for submission in subreddit.new(limit=limit):
             if not submission.stickied:
+                try:
+                    author_name = submission.author.name
+                    author_comment_karma = str(submission.author.comment_karma)
+                    author_verified_email = str(submission.author.has_verified_email)
+                    author_id = submission.author.id
+                except AttributeError:
+                    author_name = 'johndoe'
+                    author_comment_karma = '0'
+                    author_verified_email = 'false'
+                    author_id = '0'
+
+
                 writer.writerow([
-                    submission.author.name,
-                    str(submission.author.comment_karma),
-                    str(submission.author.has_verified_email),
-                    submission.author.id,
+                    author_name,
+                    author_comment_karma,
+                    author_verified_email,
+                    author_id,
                     str(submission.created_utc),
                     str(submission.edited),
                     str(submission.id),
@@ -53,7 +67,7 @@ def save_subreddit(subreddit_name, limit=10):
                     str(submission.over_18),
                     submission.permalink,
                     str(submission.score),
-                    submission.selftext,
+                    submission.selftext.replace("\n", ""),
                     str(submission.spoiler),
                     submission.title,
                     str(submission.upvote_ratio),
