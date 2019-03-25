@@ -1,6 +1,6 @@
 import praw
 import sys
-import unicodecsv as csv
+import csv
 
 reddit = praw.Reddit(client_id='QS278a4Z1eWFBw',
                      client_secret='xvA8ljlQX6sV_sg2TBtTHsjcRd8',
@@ -10,16 +10,15 @@ reddit = praw.Reddit(client_id='QS278a4Z1eWFBw',
 def save_subreddit(subreddit_name, limit=10):
     subreddit = reddit.subreddit(subreddit_name)
 
-    with open('./subreddits/' + subreddit_name + '.csv', mode='w') as csv_file:
+    with open('./subreddits/' + subreddit_name + '.csv', 'w', newline='') as csv_file:
         writer = csv.writer(csv_file, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-
         writer.writerow(['title', 'selftext', 'score', 'id', 'url'])
 
         for submission in subreddit.hot(limit=limit):
             if not submission.stickied:
-                writer.writerow([submission.title, submission.selftext, submission.score, submission.id, submission.url])
+                writer.writerow([submission.title.encode("utf-8"), submission.selftext.encode("utf-8"), str(submission.score).encode("utf-8"), str(submission.id).encode("utf-8"), submission.url.encode("utf-8")])
 
-    print('Finished subreddit: ' + subreddit_name)
+    print(('Finished subreddit: ' + subreddit_name))
 
 def main():
     subreddits = [
