@@ -1,3 +1,6 @@
+from datetime import datetime, timezone
+from time import sleep
+
 import praw
 import sys
 import csv
@@ -7,14 +10,15 @@ reddit = praw.Reddit(client_id='QS278a4Z1eWFBw',
                      user_agent='Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_6; en-en) AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4')
 
 
-def save_subreddit(subreddit_name, limit=10000):
+# Hard limit is no matter what 1000
+def save_subreddit(subreddit_name, time_start, time_end, limit=None):
     subreddit = reddit.subreddit(subreddit_name)
 
     listattributes = [
-        'author_name',
-        'author_comment_karma',
-        'author_has_verified_email',
-        'author_id',
+        # 'author_name',
+        # 'author_comment_karma',
+        # 'author_has_verified_email',
+        # 'author_id',
         'created_utc',
         'edited',
         'id',
@@ -28,7 +32,7 @@ def save_subreddit(subreddit_name, limit=10000):
         'selftext',
         'spoiler',
         'title',
-        'upvote_ratio',
+        # 'upvote_ratio',
         'url'
     ]
 
@@ -40,39 +44,54 @@ def save_subreddit(subreddit_name, limit=10000):
 
         for submission in subreddit.new(limit=limit):
             if not submission.stickied:
-                try:
-                    author_name = submission.author.name
-                    author_comment_karma = str(submission.author.comment_karma)
-                    author_verified_email = str(submission.author.has_verified_email)
-                    author_id = submission.author.id
-                except AttributeError:
-                    author_name = 'johndoe'
-                    author_comment_karma = '0'
-                    author_verified_email = 'false'
-                    author_id = '0'
+                if time_end.timestamp() < submission.created_utc < time_start.timestamp():
+                    # Check these in case author has been deleted in the mean time
+                    # if not submission.author.name:
+                    #     author_name = submission.author.name
+                    # else:
+                    #     author_name = 'johndoe'
+                    #
+                    # if not submission.author.comment_karma:
+                    #     author_comment_karma = str(submission.author.comment_karma)
+                    # else:
+                    #     author_comment_karma = '0'
+                    #
+                    # if not submission.author.has_verified_email:
+                    #     author_verified_email = str(submission.author.has_verified_email)
+                    # else:
+                    #     author_verified_email = 'false'
+                    #
+                    # if not submission.author.id:
+                    #     author_id = submission.author.id
+                    # else:
+                    #     author_id = '0'
 
 
-                writer.writerow([
-                    author_name,
-                    author_comment_karma,
-                    author_verified_email,
-                    author_id,
-                    str(submission.created_utc),
-                    str(submission.edited),
-                    str(submission.id),
-                    str(submission.is_self),
-                    str(submission.locked),
-                    submission.name,
-                    str(submission.num_comments),
-                    str(submission.over_18),
-                    submission.permalink,
-                    str(submission.score),
-                    submission.selftext.replace("\n", ""),
-                    str(submission.spoiler),
-                    submission.title,
-                    str(submission.upvote_ratio),
-                    submission.url,
-                ])
+                    writer.writerow([
+                        # author_name,
+                        # author_comment_karma,
+                        # author_verified_email,
+                        # author_id,
+                        str(submission.created_utc),
+                        str(submission.edited),
+                        str(submission.id),
+                        str(submission.is_self),
+                        str(submission.locked),
+                        submission.name,
+                        str(submission.num_comments),
+                        str(submission.over_18),
+                        submission.permalink,
+                        str(submission.score),
+                        submission.selftext.replace("\n", ""),
+                        str(submission.spoiler),
+                        submission.title,
+                        # str(submission.upvote_ratio),
+                        submission.url,
+                    ])
+                if submission.created_utc < time_end.timestamp():
+                    break
+
+                # sleep(0.002)
 
     print(('Finished subreddit: ' + subreddit_name))
 
@@ -151,8 +170,12 @@ def main():
         'Steam'
     ]
 
+    time_start = datetime(2019, 3, 25, 0, 0, 0, 0, tzinfo=timezone.utc)
+    time_end = datetime(2019, 1, 1, 0, 0, 0, 0, tzinfo=timezone.utc)
+
     for subreddit in subreddits:
-        save_subreddit(subreddit, 100)
+        print("Start getting Subreddit: " + subreddit)
+        save_subreddit(subreddit, time_start, time_end)
 
 
 if __name__ == '__main__':
