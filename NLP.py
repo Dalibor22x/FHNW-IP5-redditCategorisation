@@ -1,12 +1,14 @@
 import nltk
 import random
 
-documents = [(), ()]
+import CSVHandler
+
+documents = CSVHandler.getDocument()
 
 random.shuffle(documents)
 
 all_words = []
-for w in movie_reviews.words():
+for w in CSVHandler.getAllWords(documents):
     all_words.append(w.lower())
 
 all_words = nltk.FreqDist(all_words)
