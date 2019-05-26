@@ -5,7 +5,8 @@ def getDocument():
     with open('categorized/all_subreddits.csv', newline='', encoding='utf-8') as f:
         reader = csv.reader(f, delimiter='|')
         for row in reader:
-            documents.append((cleanString(row[2])+' '+cleanString(row[3]),row[0]))
+            if row[0] != '':
+                documents.append((cleanString(row[2])+' '+cleanString(row[3]),row[0]))
         return documents
 
 def getAllWords(document):
