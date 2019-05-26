@@ -26,13 +26,13 @@ def find_features(document):
 featuresets = [(find_features(rev), category) for (rev, category) in documents]
 
 # set that we'll train our classifier with
-training_set = featuresets[:1900]
+training_set = featuresets[:400]
 
 # set that we'll test against.
-testing_set = featuresets[1900:]
+testing_set = featuresets[400:]
 
 classifier = nltk.NaiveBayesClassifier.train(training_set)
 
-print("Classifier accuracy percent:",(nltk.classify.accuracy(classifier, testing_set))*100)
+print("Classifier accuracy percent:", (nltk.classify.accuracy(classifier, testing_set)) * 100)
 
 classifier.show_most_informative_features(15)
