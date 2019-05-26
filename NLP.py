@@ -11,6 +11,8 @@ all_words = []
 for w in CSVHandler.getAllWords(documents):
     all_words.append(w.lower())
 
+print(all_words)
+
 all_words = nltk.FreqDist(all_words)
 
 word_features = list(all_words.keys())[:3000]
