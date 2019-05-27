@@ -1,6 +1,6 @@
 import praw
 import sys
-from Post import Post
+from API.Post import Post
 
 reddit = praw.Reddit(client_id='QS278a4Z1eWFBw',
                      client_secret='xvA8ljlQX6sV_sg2TBtTHsjcRd8',
