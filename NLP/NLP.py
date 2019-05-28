@@ -35,6 +35,7 @@ training_set = featuresets[:400]
 # set that we'll test against.
 testing_set = featuresets[400:]
 
+# TODO Try Bag of words and TFID
 classifier = nltk.NaiveBayesClassifier.train(training_set)
 
 print("Classifier accuracy percent:", (nltk.classify.accuracy(classifier, testing_set)) * 100)
