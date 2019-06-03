@@ -1,35 +1,50 @@
 import csv
+import nltk
+from nltk.stem import PorterStemmer
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+
+
+ps = PorterStemmer() # for stemming the words
+nltk.download('stopwords')
+nltk.download('punkt')
+stop_words = set(stopwords.words('english'))
 
 def getDocument():
-    documents = []
+    document = []
     with open('categorized/all_subreddits.csv', newline='', encoding='utf-8') as f:
         reader = csv.reader(f, delimiter='|')
-        first = 1
+        next(reader) # Skip the first row (header)
+
         for row in reader:
-            if first == 0 and row[0] != '':
+            if row[0] != '':
                 # TODO:
                 # Try with title only first
+                # document.append(((getCleanTokens(row[2])), row[0]))
+
                 # Try with text only next
-                documents.append((cleanString(row[2])+' '+cleanString(row[3]),row[0]))
-            first = 0
-        return documents
+                # document.append(((getCleanTokens(row[3])), row[0]))
+
+                # Try with text and title
+                document.append(((getCleanTokens(row[2]) + getCleanTokens(row[3])), row[0]))
+
+        return document
 
 def getAllWords(document):
     allWords = []
     for row in document:
-        for word in row[0].split(' '):
-            allWords.append(word)
+        for tokens in row[0]:
+            allWords.append(tokens)
     return allWords
 
-def cleanString(words):
-    # TODO: Try with ntlk stopwords
-    excludedNoSpace = [',', '[', ']', '(', ')', '-', ';', '"', '\'', ':', '.']
-    excludedSpace = [' ourselves ', ' hers ', ' between ', ' yourself ', ' but ', ' again ', ' about ', ' once ', ' during ', ' out ', ' very ', ' having ', ' with ', ' they ', ' own ', ' an ', ' be ', 'some', ' for ', ' do ', ' its ', ' yours ', ' such ', ' into ', ' of ', ' most ', ' itself ', ' other ', ' off ', ' s ', ' am ', ' or ', ' as ', ' from ', ' him ', ' each ', ' the ', ' themselves ', ' until ', ' below ', ' these ', ' your ', ' his ', ' through ', ' don ', ' nor ', ' me ', ' were ', ' her ', ' more ', ' himself ', ' this ', ' down ', ' our ', ' their ',
-                ' while ', ' above ', ' both ', ' up ', ' to ', ' ours ', ' had ', ' she ', ' all ', ' no ', ' when ', ' at ', ' any ', ' before ', ' them ', ' same ', ' and ', ' been ', ' have ', ' in ', ' will ', ' on ', ' yourselves ', ' then ', ' that ', ' because ', ' over ', ' so ', ' not ', ' now ', ' under ', ' he ', ' you ', ' herself ', ' has ', ' just ', ' where ', ' too ', ' only ', ' myself ', ' which ', ' those ', ' i ', ' after ', ' few ', ' whom ', ' t ', ' being ', ' theirs ', ' my ', ' against ', ' a ', ' by ', ' doing ', ' it ', ' further ', ' was ', ' here ', ' than ']
 
-    for e in excludedNoSpace:
-        words = words.replace(e, '')
+def getCleanTokens(words):
+    word_tokens = word_tokenize(words)
 
-    for e in excludedSpace:
-        words = words.replace(e, ' ')
-    return words.lower()
+    filtered_sentence = []
+
+    for w in word_tokens:
+        if w not in stop_words:
+            filtered_sentence.append(ps.stem(w.lower()))
+
+    return filtered_sentence

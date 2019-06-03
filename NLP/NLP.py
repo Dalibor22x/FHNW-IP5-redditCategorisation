@@ -1,17 +1,12 @@
 import nltk
-import random
 
 import CSVHandler
 
 documents = CSVHandler.getDocument()
 
-random.shuffle(documents)
-
 all_words = []
 for w in CSVHandler.getAllWords(documents):
     all_words.append(w.lower())
-
-print(all_words)
 
 all_words = nltk.FreqDist(all_words)
 
