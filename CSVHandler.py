@@ -41,6 +41,8 @@ def getAllWords(document):
 def getCleanTokens(words):
     word_tokens = word_tokenize(words)
 
+    # TODO: Remove links
+
     filtered_sentence = []
 
     for w in word_tokens:

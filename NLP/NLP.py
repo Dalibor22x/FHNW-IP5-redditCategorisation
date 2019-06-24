@@ -1,8 +1,11 @@
 import nltk
+import random
 
 import CSVHandler
 
 documents = CSVHandler.getDocument()
+
+random.shuffle(documents)  # Random shuffle in order to not always test with the last subreddit
 
 all_words = []
 for w in CSVHandler.getAllWords(documents):
@@ -24,11 +27,9 @@ def find_features(document):
 
 featuresets = [(find_features(rev), category) for (rev, category) in documents]
 
-# set that we'll train our classifier with
-training_set = featuresets[:400]
-
-# set that we'll test against.
-testing_set = featuresets[400:]
+learn_test_threshold = 550
+training_set = featuresets[:learn_test_threshold]  # set that we'll train our classifier with
+testing_set = featuresets[learn_test_threshold:]  # set that we'll test against.
 
 # TODO Try Bag of words and TFID
 classifier = nltk.NaiveBayesClassifier.train(training_set)
