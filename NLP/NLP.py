@@ -27,7 +27,7 @@ def find_features(document):
 
 featuresets = [(find_features(rev), category) for (rev, category) in documents]
 
-learn_test_threshold = 550
+learn_test_threshold = 700
 training_set = featuresets[:learn_test_threshold]  # set that we'll train our classifier with
 testing_set = featuresets[learn_test_threshold:]  # set that we'll test against.
 
