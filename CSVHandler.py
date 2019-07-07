@@ -1,36 +1,59 @@
 import csv
 import nltk
+import os
+import random
 from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
 
-ps = PorterStemmer() # for stemming the words
+ps = PorterStemmer()  # for stemming the words
 nltk.download('stopwords')
 nltk.download('punkt')
 stop_words = set(stopwords.words('english'))
 
-def getDocument():
-    document = []
+
+def prepare_subreddits():
+    with open('categorized/all_subreddits.tsv', 'U') as f:
+
+        new_text = f.read()
+
+        while '|' in new_text:
+            new_text = new_text.replace('|', '~~')
+
+        while '	' in new_text:
+            new_text = new_text.replace('	', '|')
+
+    with open('categorized/all_subreddits.csv', "w") as f:
+        f.write(new_text)
+
+    if os.path.exists("categorized/all_subreddits.tsv"):
+        os.remove("categorized/all_subreddits.tsv")
+
+
+def get_document(mode):
+    print("Running in mode: " + mode)
+
+    documents = []
     with open('categorized/all_subreddits.csv', newline='', encoding='utf-8') as f:
         reader = csv.reader(f, delimiter='|')
-        next(reader) # Skip the first row (header)
+        next(reader)  # Skip the first row (header)
 
         for row in reader:
             if row[0] != '':
-                # TODO:
-                # Try with title only first
-                # document.append(((getCleanTokens(row[2])), row[0]))
+                if mode == "title_only":
+                    documents.append(((get_clean_tokens(row[2])), row[0]))
+                elif mode == "text_only":
+                    documents.append(((get_clean_tokens(row[3])), row[0]))
+                else:
+                    documents.append(((get_clean_tokens(row[2]) + get_clean_tokens(row[3])), row[0]))
 
-                # Try with text only next
-                # document.append(((getCleanTokens(row[3])), row[0]))
+        random.shuffle(documents)
 
-                # Try with text and title
-                document.append(((getCleanTokens(row[2]) + getCleanTokens(row[3])), row[0]))
+        return documents  # Random shuffle in order to not always test with the last subreddit
 
-        return document
 
-def getAllWords(document):
+def get_all_words(document):
     allWords = []
     for row in document:
         for tokens in row[0]:
@@ -38,7 +61,7 @@ def getAllWords(document):
     return allWords
 
 
-def getCleanTokens(words):
+def get_clean_tokens(words):
     word_tokens = word_tokenize(words)
 
     # TODO: Remove links
