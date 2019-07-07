@@ -24,7 +24,7 @@ def run(documents):
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
-    # TODO: Try different classifieres (different algorithms)
+    # TODO: Try different classifiers (different algorithms)
     classifier = RandomForestClassifier(n_estimators=1000, random_state=0)
     classifier.fit(X_train, y_train)
 
