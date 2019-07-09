@@ -1,8 +1,5 @@
-import CSVHandler
-import nltk
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import CountVectorizer
-# nltk.download('stopwords')
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.model_selection import train_test_split

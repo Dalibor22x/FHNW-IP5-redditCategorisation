@@ -1,5 +1,7 @@
 import nltk
 import CSVHandler
+from sklearn.feature_extraction.text import CountVectorizer
+from nltk.corpus import stopwords
 
 
 def run(documents):

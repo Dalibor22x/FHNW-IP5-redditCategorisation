@@ -34,13 +34,16 @@ def prepare_subreddits():
 def get_document(mode):
     print("Running in mode: " + mode)
 
+    # excluded_categories = ["Feature information", "Feature strength", "General praise", "Social interaction", "Software constraint", "Software extension"]
+    excluded_categories = ["Bug report", "Content related", "Question", "Unclear / Unrelated"]
+
     documents = []
     with open('categorized/all_subreddits.csv', newline='', encoding='utf-8') as f:
         reader = csv.reader(f, delimiter='|')
         next(reader)  # Skip the first row (header)
 
         for row in reader:
-            if row[0] != '':
+            if row[0] != '' and row[0] in excluded_categories:
                 if mode == "title_only":
                     documents.append(((get_clean_tokens(row[2])), row[0]))
                 elif mode == "text_only":
@@ -48,9 +51,9 @@ def get_document(mode):
                 else:
                     documents.append(((get_clean_tokens(row[2]) + get_clean_tokens(row[3])), row[0]))
 
-        random.shuffle(documents)
+        random.shuffle(documents)  # Random shuffle in order to not always test with the last subreddit
 
-        return documents  # Random shuffle in order to not always test with the last subreddit
+        return documents
 
 
 def get_all_words(document):
@@ -65,6 +68,8 @@ def get_clean_tokens(words):
     word_tokens = word_tokenize(words)
 
     # TODO: Remove links
+    # TODO: Add n-grams
+    # TODO: Punctuation?
 
     filtered_sentence = []
 
