@@ -7,7 +7,7 @@ import Algorithms
 import Algorithm
 
 # If import is needed
-if os.path.exists("categorized/all_subreddits.tsv"):
+if os.path.exists("data/import_me.tsv"):
     CSVHandler.prepare_subreddits()
 
 modes = ["normal", "title_only", "text_only"]

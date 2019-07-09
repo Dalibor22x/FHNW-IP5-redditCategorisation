@@ -1,20 +1,24 @@
 import csv
 import nltk
 import os
+import re
 import random
-from nltk.stem import PorterStemmer
+from nltk.stem import PorterStemmer, WordNetLemmatizer
 from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
+from nltk.tokenize import RegexpTokenizer
 
 
 ps = PorterStemmer()  # for stemming the words
-nltk.download('stopwords')
-nltk.download('punkt')
+# TODO: Download only if necessary
+# nltk.download('stopwords')
+# nltk.download('punkt')
+nltk.download('wordnet')
 stop_words = set(stopwords.words('english'))
 
 
+
 def prepare_subreddits():
-    with open('categorized/all_subreddits.tsv', 'U') as f:
+    with open('data/import_me.tsv', 'U') as f:
 
         new_text = f.read()
 
@@ -24,11 +28,11 @@ def prepare_subreddits():
         while '	' in new_text:
             new_text = new_text.replace('	', '|')
 
-    with open('categorized/all_subreddits.csv', "w") as f:
+    with open('data/all_subreddits.csv', "w") as f:
         f.write(new_text)
 
-    if os.path.exists("categorized/all_subreddits.tsv"):
-        os.remove("categorized/all_subreddits.tsv")
+    if os.path.exists("data/import_me.tsv"):
+        os.remove("data/import_me.tsv")
 
 
 def get_document(mode):
@@ -38,7 +42,7 @@ def get_document(mode):
     excluded_categories = ["Bug report", "Content related", "Question", "Unclear / Unrelated"]
 
     documents = []
-    with open('categorized/all_subreddits.csv', newline='', encoding='utf-8') as f:
+    with open('data/all_subreddits.csv', newline='', encoding='utf-8') as f:
         reader = csv.reader(f, delimiter='|')
         next(reader)  # Skip the first row (header)
 
@@ -51,7 +55,14 @@ def get_document(mode):
                 else:
                     documents.append(((get_clean_tokens(row[2]) + get_clean_tokens(row[3])), row[0]))
 
-        random.shuffle(documents)  # Random shuffle in order to not always test with the last subreddit
+        # random.shuffle(documents)  # Random shuffle in order to not always test with the last subreddit
+
+        # Write to CSV
+        with open('data/preprocessed.csv', 'w') as out:
+            csv_out = csv.writer(out, delimiter="|")
+            csv_out.writerow(['tokens', 'classification'])
+            for row in documents:
+                csv_out.writerow(row)
 
         return documents
 
@@ -65,16 +76,22 @@ def get_all_words(document):
 
 
 def get_clean_tokens(words):
-    word_tokens = word_tokenize(words)
+    words = re.sub(r"http\S+", "", words)  # Remove links
 
-    # TODO: Remove links
-    # TODO: Add n-grams
-    # TODO: Punctuation?
+    tokenizer = RegexpTokenizer(r'\w+')
+    word_tokens = tokenizer.tokenize(words)
+    lemmatizer = WordNetLemmatizer()
 
     filtered_sentence = []
 
+    # TODO: Add lemmatization
+
     for w in word_tokens:
         if w not in stop_words:
-            filtered_sentence.append(ps.stem(w.lower()))
+            w = ps.stem(w.lower())
+            w = lemmatizer.lemmatize(w, pos='v')
+            filtered_sentence.append(w)
 
-    return filtered_sentence
+    n = 2
+    ngrams = zip(*[filtered_sentence[i:] for i in range(n)])
+    return [" ".join(ngram) for ngram in ngrams]
