@@ -1,22 +1,19 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.corpus import stopwords
-from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
-import pandas
-import csv
-from sklearn.model_selection import KFold
-from sklearn.model_selection import cross_val_score
 import numpy as np
+import csv
 
 
-def run(documents, classifier, model):
-    print("\n\nRunning Algorithm: '{}' with model: '{}'".format(classifier.__class__.__name__, model))
+def run(documents, classifier, feature_model, identifier_addition, write_output):
+    identifier = "Algorithm: '{}', feature-model: '{}', {}".format(classifier.__class__.__name__, feature_model, identifier_addition)
+    print("\n\nRunning: '{}'".format(identifier))
 
     docs = list(map(lambda x: ' '.join(x[0]), documents))
     y = list(map(lambda x: x[1], documents))
 
-    if model == "Bag of Words":
+    if feature_model == "Bag of Words":
         vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7, stop_words=stopwords.words('english'))
         X = vectorizer.fit_transform(docs)
         X = X.toarray()
@@ -50,6 +47,8 @@ def run(documents, classifier, model):
 
     print("Average score after {} fold crossvalidation: {}".format(k_folds, np.mean(scores)))
 
+    print("\nOut of sample:")
+
     classifier.fit(X, y)
 
     X_train = out_of_sample_X
@@ -67,16 +66,17 @@ def run(documents, classifier, model):
     accuracy = accuracy_score(y_test, y_pred)
     print(accuracy)
 
-    # learn_test_threshold = int(round(len(documents) * learn_test_threshold_percentage))
-    # testing_set = documents[learn_test_threshold:]  # set that we'll test against.
+    if write_output:
+        out_of_sample_x_data = docs[:out_of_sample_threshold]
+        out_of_sample_y_data = y[:out_of_sample_threshold]
+        prediction = list(zip(zip(out_of_sample_x_data, out_of_sample_y_data), y_pred))
 
-    # prediction = list(zip(testing_set, y_pred))
+        # Write to CSV
+        file_name = identifier.replace(" ", "_").replace("'", "").replace(":", "").replace(",", "_")
+        with open("data/output/" + file_name + ".csv", 'w') as out:
+            csv_out = csv.writer(out, delimiter="|")
+            csv_out.writerow(['test_set', 'prediction'])
+            for row in prediction:
+                csv_out.writerow(row)
 
-    # Write to CSV
-    # with open("data/output" + classifier.__class__.__name__ + ".csv", 'w') as out:
-    #     csv_out = csv.writer(out, delimiter="|")
-    #     csv_out.writerow(['test_set', 'prediction'])
-    #     for row in prediction:
-    #         csv_out.writerow(row)
-
-    return documents
+    return (identifier, np.mean(scores))
