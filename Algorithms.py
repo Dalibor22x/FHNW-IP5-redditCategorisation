@@ -3,6 +3,8 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.naive_bayes import GaussianNB
 from sklearn.naive_bayes import ComplementNB
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+
 from sklearn.model_selection import GridSearchCV
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -31,6 +33,10 @@ class Algorithms:
     @staticmethod
     def k_neighbors():
         return KNeighborsClassifier()
+
+    @staticmethod
+    def svc():
+        return SVC()
 
     @staticmethod
     def hyperparameter_tuning__multinomial_naive_bayes(documents, text_model):

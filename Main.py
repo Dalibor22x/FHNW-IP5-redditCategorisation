@@ -14,6 +14,7 @@ all_algorithms = [
     algorithms.complement_naive_bayes(),
     algorithms.gaussian_naive_bayes(),
     algorithms.random_forest(),
+    algorithms.svc(),
     # algorithms.k_neighbors()
 ]
 
