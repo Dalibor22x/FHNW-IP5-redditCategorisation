@@ -12,7 +12,7 @@ algorithms = Algorithms.Algorithms
 all_algorithms = [
     algorithms.multinomial_naive_bayes(),
     algorithms.complement_naive_bayes(),
-    algorithms.gaussian_naive_bayes(),
+    # algorithms.gaussian_naive_bayes(),
     algorithms.random_forest(),
     algorithms.svc(),
     # algorithms.k_neighbors()

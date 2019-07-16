@@ -98,7 +98,6 @@ def get_clean_tokens(words, n):
 
     filtered_sentence = []
 
-
     for w in word_tokens:
         if w not in stop_words:
             w = ps.stem(w.lower())

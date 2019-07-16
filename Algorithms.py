@@ -36,7 +36,7 @@ class Algorithms:
 
     @staticmethod
     def svc():
-        return SVC()
+        return SVC(gamma="scale")
 
     @staticmethod
     def hyperparameter_tuning__multinomial_naive_bayes(documents, text_model):
