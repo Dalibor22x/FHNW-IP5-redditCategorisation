@@ -13,12 +13,13 @@ possible_n_grams = [1, 2, 3]
 reduced_categories_possibilities = [True]
 algorithms = Algorithms.Algorithms
 all_algorithms = [
-    algorithms.multinomial_naive_bayes(),
+    # algorithms.multinomial_naive_bayes(),
     # algorithms.complement_naive_bayes(),
     # algorithms.gaussian_naive_bayes(),
-    algorithms.random_forest(),
-    algorithms.svc(),
-    # algorithms.k_neighbors()
+    # algorithms.random_forest(),
+    # algorithms.svc(),
+    # algorithms.k_neighbors(),
+    algorithms.ada_boost()
 ]
 
 def main():

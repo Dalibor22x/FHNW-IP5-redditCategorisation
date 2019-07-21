@@ -5,6 +5,7 @@ from sklearn.naive_bayes import ComplementNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.linear_model import ElasticNet
+from sklearn.ensemble import AdaBoostClassifier
 
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import RandomizedSearchCV
@@ -41,8 +42,8 @@ class Algorithms:
         return SVC(gamma=0.08838834764831845, C=7)
 
     @staticmethod
-    def elastic_net():
-        return ElasticNet()
+    def ada_boost():
+        return AdaBoostClassifier()
 
     @staticmethod
     def hyperparameter_tuning__multinomial_naive_bayes(documents, text_model):
