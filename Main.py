@@ -4,14 +4,17 @@ import Algorithms
 import Algorithm
 from operator import itemgetter
 
-text_modes = ["normal", "title_only", "text_only"]
+# text_modes = ["normal", "title_only", "text_only"]
+text_modes = ["normal"]
 feature_models = ["Bag of Words", "TF IDF"]
+# feature_models = ["TF IDF"]
 possible_n_grams = [1, 2, 3]
-reduced_categories_possibilities = [True, False]
+# reduced_categories_possibilities = [True, False]
+reduced_categories_possibilities = [True]
 algorithms = Algorithms.Algorithms
 all_algorithms = [
     algorithms.multinomial_naive_bayes(),
-    algorithms.complement_naive_bayes(),
+    # algorithms.complement_naive_bayes(),
     # algorithms.gaussian_naive_bayes(),
     algorithms.random_forest(),
     algorithms.svc(),
@@ -52,11 +55,12 @@ def evaluate_best_model():
 
 
 def evaluate_best_parameters():
-    documents = CSVHandler.get_document("text_only", 3, True)
+    documents = CSVHandler.get_document("normal", 2, True)
 
     # algorithms.hyperparameter_tuning__random_forest(documents=documents, text_model="TF IDF")
     # algorithms.hyperparameter_tuning__k_neighbors(documents=documents, text_model="TF IDF")
     algorithms.hyperparameter_tuning__multinomial_naive_bayes(documents=documents, text_model="TF IDF")
+    # algorithms.hyperparameter_tuning__svc(documents=documents, text_model="TF IDF")
 
 
 if __name__ == '__main__':
