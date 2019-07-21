@@ -57,9 +57,9 @@ def evaluate_best_model():
 def evaluate_best_parameters():
     documents = CSVHandler.get_document("normal", 2, True)
 
-    # algorithms.hyperparameter_tuning__random_forest(documents=documents, text_model="TF IDF")
+    algorithms.hyperparameter_tuning__random_forest(documents=documents, text_model="TF IDF")
     # algorithms.hyperparameter_tuning__k_neighbors(documents=documents, text_model="TF IDF")
-    algorithms.hyperparameter_tuning__multinomial_naive_bayes(documents=documents, text_model="TF IDF")
+    # algorithms.hyperparameter_tuning__multinomial_naive_bayes(documents=documents, text_model="TF IDF")
     # algorithms.hyperparameter_tuning__svc(documents=documents, text_model="TF IDF")
 
 

@@ -30,7 +30,7 @@ class Algorithms:
 
     @staticmethod
     def random_forest():
-        return RandomForestClassifier(n_estimators=100)
+        return RandomForestClassifier(bootstrap=False, max_depth=120, max_features="sqrt", min_samples_leaf=2, min_samples_split=2, n_estimators=800)
 
     @staticmethod
     def k_neighbors():
@@ -75,14 +75,28 @@ class Algorithms:
 
     @staticmethod
     def hyperparameter_tuning__random_forest(documents, text_model):
+        # param_grid = {
+        #     'bootstrap': [True, False],
+        #     'max_depth': [None, 80, 90, 100, 110],
+        #     'max_features': [2, 3, "auto"],
+        #     'min_samples_leaf': [1, 3, 4, 5],
+        #     'min_samples_split': [2, 8, 10, 12],
+        #     'n_estimators': [100, 200, 300, 1000]
+        # }
+
         param_grid = {
-            'bootstrap': [True],
-            'max_depth': [80, 90, 100, 110],
-            'max_features': [2, 3],
-            'min_samples_leaf': [3, 4, 5],
-            'min_samples_split': [8, 10, 12],
-            'n_estimators': [100, 200, 300, 1000]
+            'bootstrap': [False],
+            'max_depth': [80, 90, 100, 110, 120],
+            'max_features': ['sqrt'],
+            'min_samples_leaf': [1, 2, 4],
+            'min_samples_split': [2, 5, 10],
+            'n_estimators': [600, 800, 1000, 1200, 1400]
         }
+        # 0.6843403205918619
+        # {'n_estimators': 1000, 'min_samples_split': 5, 'min_samples_leaf': 2, 'max_features': 'sqrt', 'max_depth': 100, 'bootstrap': False}
+
+        # 0.6886559802712701
+        # {'bootstrap': False, 'max_depth': 120, 'max_features': 'sqrt', 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 800}
 
         model = RandomForestClassifier()
         Algorithms.hyperparameter_tuning(model, param_grid, documents, text_model)
