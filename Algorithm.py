@@ -4,9 +4,10 @@ from nltk.corpus import stopwords
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 import numpy as np
 import csv
+import CSVHandler
 
 
-def run(documents, classifier, feature_model, identifier_addition, write_output, tfidf_max_features, tfidf_min_df, tfidf_max_df):
+def run(documents, classifier, feature_model, identifier_addition, write_output, categorize_uncategorized, tfidf_max_features, tfidf_min_df, tfidf_max_df):
     identifier = "Algorithm: '{}', feature-model: '{}', {}".format(classifier.__class__.__name__, feature_model, identifier_addition)
     print("\n\nRunning: '{}'".format(identifier))
 
@@ -66,7 +67,8 @@ def run(documents, classifier, feature_model, identifier_addition, write_output,
     accuracy = accuracy_score(y_test, y_pred)
     print(accuracy)
 
-    if write_output:
+
+    if write_output and not categorize_uncategorized:
         out_of_sample_x_data = docs[:out_of_sample_threshold]
         out_of_sample_y_data = y[:out_of_sample_threshold]
         prediction = list(zip(zip(out_of_sample_x_data, out_of_sample_y_data), y_pred))
@@ -78,5 +80,17 @@ def run(documents, classifier, feature_model, identifier_addition, write_output,
             csv_out.writerow(['test_set', 'prediction'])
             for row in prediction:
                 csv_out.writerow(row)
+    elif write_output and categorize_uncategorized:
+        uncategorized_documents = CSVHandler.get_document(text_mode="normal", n=2, reduced_categories=True, categorize_uncategorized=False)
+        #
+        # # Write to CSV
+        # file_name = identifier.replace(" ", "_").replace("'", "").replace(":", "").replace(",", "_")
+        # with open("data/output/" + file_name + ".csv", 'w') as out:
+        #     csv_out = csv.writer(out, delimiter="|")
+        #     csv_out.writerow(['test_set', 'prediction'])
+        #     for row in prediction:
+        #         csv_out.writerow(row)
+
+
 
     return (identifier, np.mean(scores))

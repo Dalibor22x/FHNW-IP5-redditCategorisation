@@ -48,7 +48,7 @@ def evaluate_best_model():
                         tfidf_max_features = algorithm["tfidf_max_features"]
                         tfidf_min_df = algorithm["tfidf_min_df"]
                         tfidf_max_df = algorithm["tfidf_max_df"]
-                        scores.append(Algorithm.run(documents, a, model, identifier_addition, True, tfidf_max_features, tfidf_min_df, tfidf_max_df))
+                        scores.append(Algorithm.run(documents, a, model, identifier_addition, True, False, tfidf_max_features, tfidf_min_df, tfidf_max_df))
 
     print("\n\n\n\nOverview:")
     scores = sorted(scores, key=lambda s: (-s[1], s[0]))
@@ -82,7 +82,7 @@ def evaluate_best_TFIDF_parameters():
             for max_df in tfidf_max_df:
                 identifier_addition = "text-mode: 'normal', 2-grams, reduced-categories: True, max_features: {}, min_df: {}, max_df: {}".format(mf, min_df, max_df)
                 algorithm = algorithms.random_forest()["algorithm"]
-                scores.append(Algorithm.run(documents, algorithm, model, identifier_addition, True, mf, min_df, max_df))
+                scores.append(Algorithm.run(documents, algorithm, model, identifier_addition, True, False, mf, min_df, max_df))
 
     print("\n\n\n\nOverview:")
     scores = sorted(scores, key=lambda s: (-s[1], s[0]))

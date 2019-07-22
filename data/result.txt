@@ -6,128 +6,128 @@ Running in mode: normal
 
 
 Running: 'Algorithm: 'MultinomialNB', feature-model: 'TF IDF', text-mode: 'normal', 1-grams, reduced-categories: True'
-Average score after 10 fold crossvalidation: 0.6660543681670441
+Average score after 10 fold crossvalidation: 0.6657945658308474
 
 Out of sample:
 Confusion matrix:
-[[ 19   0  24   0]
- [  2   1   3   1]
- [ 10   4 126   1]
+[[ 22   0  21   0]
+ [  1   1   3   2]
+ [  9   4 127   1]
  [  3   1   4   1]]
 
 
 Classification report:
                      precision    recall  f1-score   support
 
-         Bug report       0.56      0.44      0.49        43
+         Bug report       0.63      0.51      0.56        43
     Content related       0.17      0.14      0.15         7
-           Question       0.80      0.89      0.85       141
-Unclear / Unrelated       0.33      0.11      0.17         9
+           Question       0.82      0.90      0.86       141
+Unclear / Unrelated       0.25      0.11      0.15         9
 
-           accuracy                           0.73       200
-          macro avg       0.47      0.40      0.41       200
-       weighted avg       0.71      0.73      0.72       200
+           accuracy                           0.76       200
+          macro avg       0.47      0.42      0.43       200
+       weighted avg       0.73      0.76      0.74       200
 
 
 
 Accuracy score:
-0.735
+0.755
 
 
 Running: 'Algorithm: 'ComplementNB', feature-model: 'TF IDF', text-mode: 'normal', 1-grams, reduced-categories: True'
-Average score after 10 fold crossvalidation: 0.6287796710331921
+Average score after 10 fold crossvalidation: 0.6277150689349351
 
 Out of sample:
 Confusion matrix:
-[[ 27   2  14   0]
+[[ 30   2  11   0]
  [  2   1   3   1]
- [ 18   8 112   3]
- [  3   2   2   2]]
+ [ 20   9 109   3]
+ [  4   2   2   1]]
 
 
 Classification report:
                      precision    recall  f1-score   support
 
-         Bug report       0.54      0.63      0.58        43
-    Content related       0.08      0.14      0.10         7
-           Question       0.85      0.79      0.82       141
-Unclear / Unrelated       0.33      0.22      0.27         9
+         Bug report       0.54      0.70      0.61        43
+    Content related       0.07      0.14      0.10         7
+           Question       0.87      0.77      0.82       141
+Unclear / Unrelated       0.20      0.11      0.14         9
 
-           accuracy                           0.71       200
-          macro avg       0.45      0.45      0.44       200
-       weighted avg       0.74      0.71      0.72       200
+           accuracy                           0.70       200
+          macro avg       0.42      0.43      0.42       200
+       weighted avg       0.74      0.70      0.72       200
 
 
 
 Accuracy score:
-0.71
+0.705
 
 
 Running: 'Algorithm: 'RandomForestClassifier', feature-model: 'TF IDF', text-mode: 'normal', 1-grams, reduced-categories: True'
-Average score after 10 fold crossvalidation: 0.6758396533044421
+Average score after 10 fold crossvalidation: 0.7057808594694832
 
 Out of sample:
 Confusion matrix:
-[[ 16   2  25   0]
- [  0   6   1   0]
- [  4  10 126   1]
- [  0   5   4   0]]
+[[ 17   2  24   0]
+ [  0   5   2   0]
+ [  4   8 128   1]
+ [  1   5   3   0]]
 
 
 Classification report:
                      precision    recall  f1-score   support
 
-         Bug report       0.80      0.37      0.51        43
-    Content related       0.26      0.86      0.40         7
-           Question       0.81      0.89      0.85       141
+         Bug report       0.77      0.40      0.52        43
+    Content related       0.25      0.71      0.37         7
+           Question       0.82      0.91      0.86       141
 Unclear / Unrelated       0.00      0.00      0.00         9
 
-           accuracy                           0.74       200
-          macro avg       0.47      0.53      0.44       200
-       weighted avg       0.75      0.74      0.72       200
+           accuracy                           0.75       200
+          macro avg       0.46      0.50      0.44       200
+       weighted avg       0.75      0.75      0.73       200
 
 
 
 Accuracy score:
-0.74
+0.75
 
 
 Running: 'Algorithm: 'SVC', feature-model: 'TF IDF', text-mode: 'normal', 1-grams, reduced-categories: True'
-Average score after 10 fold crossvalidation: 0.686452280114252
+Average score after 10 fold crossvalidation: 0.6855075384987502
 
 Out of sample:
 Confusion matrix:
-[[ 21   1  21   0]
- [  0   2   5   0]
- [  8   5 128   0]
- [  0   3   4   2]]
+[[ 25   1  17   0]
+ [  0   1   6   0]
+ [  7   4 130   0]
+ [  0   3   5   1]]
 
 
 Classification report:
                      precision    recall  f1-score   support
 
-         Bug report       0.72      0.49      0.58        43
-    Content related       0.18      0.29      0.22         7
-           Question       0.81      0.91      0.86       141
-Unclear / Unrelated       1.00      0.22      0.36         9
+         Bug report       0.78      0.58      0.67        43
+    Content related       0.11      0.14      0.12         7
+           Question       0.82      0.92      0.87       141
+Unclear / Unrelated       1.00      0.11      0.20         9
 
-           accuracy                           0.77       200
-          macro avg       0.68      0.48      0.51       200
-       weighted avg       0.78      0.77      0.75       200
+           accuracy                           0.79       200
+          macro avg       0.68      0.44      0.47       200
+       weighted avg       0.80      0.79      0.77       200
 
 
 
 Accuracy score:
-0.765
+0.785
 Running in mode: normal
 
 
 Running: 'Algorithm: 'MultinomialNB', feature-model: 'TF IDF', text-mode: 'normal', 2-grams, reduced-categories: True'
-Average score after 10 fold crossvalidation: 0.6618487146656161
+Average score after 10 fold crossvalidation: 0.6600782068854308
 
 Out of sample:
 Confusion matrix:
-[[ 19   0  24   0]
+[[ 21   0  22   0]
  [  2   1   3   1]
  [ 11   3 125   2]
  [  3   1   4   1]]
@@ -136,72 +136,14 @@ Confusion matrix:
 Classification report:
                      precision    recall  f1-score   support
 
-         Bug report       0.54      0.44      0.49        43
+         Bug report       0.57      0.49      0.53        43
     Content related       0.20      0.14      0.17         7
-           Question       0.80      0.89      0.84       141
+           Question       0.81      0.89      0.85       141
 Unclear / Unrelated       0.25      0.11      0.15         9
 
-           accuracy                           0.73       200
-          macro avg       0.45      0.40      0.41       200
-       weighted avg       0.70      0.73      0.71       200
-
-
-
-Accuracy score:
-0.73
-
-
-Running: 'Algorithm: 'ComplementNB', feature-model: 'TF IDF', text-mode: 'normal', 2-grams, reduced-categories: True'
-Average score after 10 fold crossvalidation: 0.6259726189303654
-
-Out of sample:
-Confusion matrix:
-[[ 27   3  13   0]
- [  2   1   3   1]
- [ 20   9 109   3]
- [  3   2   3   1]]
-
-
-Classification report:
-                     precision    recall  f1-score   support
-
-         Bug report       0.52      0.63      0.57        43
-    Content related       0.07      0.14      0.09         7
-           Question       0.85      0.77      0.81       141
-Unclear / Unrelated       0.20      0.11      0.14         9
-
-           accuracy                           0.69       200
-          macro avg       0.41      0.41      0.40       200
-       weighted avg       0.72      0.69      0.70       200
-
-
-
-Accuracy score:
-0.69
-
-
-Running: 'Algorithm: 'RandomForestClassifier', feature-model: 'TF IDF', text-mode: 'normal', 2-grams, reduced-categories: True'
-Average score after 10 fold crossvalidation: 0.6744361272530287
-
-Out of sample:
-Confusion matrix:
-[[ 14   2  27   0]
- [  0   6   1   0]
- [  3  10 127   1]
- [  0   5   3   1]]
-
-
-Classification report:
-                     precision    recall  f1-score   support
-
-         Bug report       0.82      0.33      0.47        43
-    Content related       0.26      0.86      0.40         7
-           Question       0.80      0.90      0.85       141
-Unclear / Unrelated       0.50      0.11      0.18         9
-
            accuracy                           0.74       200
-          macro avg       0.60      0.55      0.47       200
-       weighted avg       0.78      0.74      0.72       200
+          macro avg       0.46      0.41      0.42       200
+       weighted avg       0.71      0.74      0.72       200
 
 
 
@@ -209,169 +151,227 @@ Accuracy score:
 0.74
 
 
-Running: 'Algorithm: 'SVC', feature-model: 'TF IDF', text-mode: 'normal', 2-grams, reduced-categories: True'
-Average score after 10 fold crossvalidation: 0.690677632226928
+Running: 'Algorithm: 'ComplementNB', feature-model: 'TF IDF', text-mode: 'normal', 2-grams, reduced-categories: True'
+Average score after 10 fold crossvalidation: 0.6245343868418931
 
 Out of sample:
 Confusion matrix:
-[[ 21   1  21   0]
- [  0   1   6   0]
- [  9   3 129   0]
- [  0   3   4   2]]
-
-
-Classification report:
-                     precision    recall  f1-score   support
-
-         Bug report       0.70      0.49      0.58        43
-    Content related       0.12      0.14      0.13         7
-           Question       0.81      0.91      0.86       141
-Unclear / Unrelated       1.00      0.22      0.36         9
-
-           accuracy                           0.77       200
-          macro avg       0.66      0.44      0.48       200
-       weighted avg       0.77      0.77      0.75       200
-
-
-
-Accuracy score:
-0.765
-Running in mode: normal
-
-
-Running: 'Algorithm: 'MultinomialNB', feature-model: 'TF IDF', text-mode: 'normal', 3-grams, reduced-categories: True'
-Average score after 10 fold crossvalidation: 0.6541120850980006
-
-Out of sample:
-Confusion matrix:
-[[ 20   0  23   0]
- [  3   1   2   1]
- [ 10   4 125   2]
- [  4   1   4   0]]
-
-
-Classification report:
-                     precision    recall  f1-score   support
-
-         Bug report       0.54      0.47      0.50        43
-    Content related       0.17      0.14      0.15         7
-           Question       0.81      0.89      0.85       141
-Unclear / Unrelated       0.00      0.00      0.00         9
-
-           accuracy                           0.73       200
-          macro avg       0.38      0.37      0.38       200
-       weighted avg       0.69      0.73      0.71       200
-
-
-
-Accuracy score:
-0.73
-
-
-Running: 'Algorithm: 'ComplementNB', feature-model: 'TF IDF', text-mode: 'normal', 3-grams, reduced-categories: True'
-Average score after 10 fold crossvalidation: 0.6196395154141634
-
-Out of sample:
-Confusion matrix:
-[[ 25   5  13   0]
- [  3   1   1   2]
- [ 19  10 107   5]
+[[ 27   6  10   0]
+ [  2   1   3   1]
+ [ 21   9 106   5]
  [  5   1   3   0]]
 
 
 Classification report:
                      precision    recall  f1-score   support
 
-         Bug report       0.48      0.58      0.53        43
+         Bug report       0.49      0.63      0.55        43
     Content related       0.06      0.14      0.08         7
-           Question       0.86      0.76      0.81       141
+           Question       0.87      0.75      0.81       141
 Unclear / Unrelated       0.00      0.00      0.00         9
 
            accuracy                           0.67       200
-          macro avg       0.35      0.37      0.35       200
-       weighted avg       0.71      0.67      0.69       200
+          macro avg       0.35      0.38      0.36       200
+       weighted avg       0.72      0.67      0.69       200
 
 
 
 Accuracy score:
-0.665
+0.67
 
 
-Running: 'Algorithm: 'RandomForestClassifier', feature-model: 'TF IDF', text-mode: 'normal', 3-grams, reduced-categories: True'
-Average score after 10 fold crossvalidation: 0.6716290751502019
+Running: 'Algorithm: 'RandomForestClassifier', feature-model: 'TF IDF', text-mode: 'normal', 2-grams, reduced-categories: True'
+Average score after 10 fold crossvalidation: 0.6969039748447956
 
 Out of sample:
 Confusion matrix:
-[[ 18   2  23   0]
- [  0   6   1   0]
- [  4   8 128   1]
- [  0   5   3   1]]
+[[ 19   2  22   0]
+ [  0   5   2   0]
+ [  4  10 125   2]
+ [  1   5   3   0]]
 
 
 Classification report:
                      precision    recall  f1-score   support
 
-         Bug report       0.82      0.42      0.55        43
-    Content related       0.29      0.86      0.43         7
-           Question       0.83      0.91      0.86       141
-Unclear / Unrelated       0.50      0.11      0.18         9
+         Bug report       0.79      0.44      0.57        43
+    Content related       0.23      0.71      0.34         7
+           Question       0.82      0.89      0.85       141
+Unclear / Unrelated       0.00      0.00      0.00         9
 
-           accuracy                           0.77       200
-          macro avg       0.61      0.57      0.51       200
-       weighted avg       0.79      0.77      0.75       200
+           accuracy                           0.74       200
+          macro avg       0.46      0.51      0.44       200
+       weighted avg       0.76      0.74      0.74       200
 
 
 
 Accuracy score:
-0.765
+0.745
 
 
-Running: 'Algorithm: 'SVC', feature-model: 'TF IDF', text-mode: 'normal', 3-grams, reduced-categories: True'
-Average score after 10 fold crossvalidation: 0.6829459273121244
+Running: 'Algorithm: 'SVC', feature-model: 'TF IDF', text-mode: 'normal', 2-grams, reduced-categories: True'
+Average score after 10 fold crossvalidation: 0.6804321535112472
 
 Out of sample:
 Confusion matrix:
-[[ 23   0  20   0]
- [  0   1   4   2]
- [  8   4 129   0]
- [  0   1   5   3]]
+[[ 24   2  17   0]
+ [  0   1   6   0]
+ [  7   4 130   0]
+ [  0   3   5   1]]
 
 
 Classification report:
                      precision    recall  f1-score   support
 
-         Bug report       0.74      0.53      0.62        43
-    Content related       0.17      0.14      0.15         7
-           Question       0.82      0.91      0.86       141
-Unclear / Unrelated       0.60      0.33      0.43         9
+         Bug report       0.77      0.56      0.65        43
+    Content related       0.10      0.14      0.12         7
+           Question       0.82      0.92      0.87       141
+Unclear / Unrelated       1.00      0.11      0.20         9
 
            accuracy                           0.78       200
-          macro avg       0.58      0.48      0.52       200
-       weighted avg       0.77      0.78      0.77       200
+          macro avg       0.67      0.43      0.46       200
+       weighted avg       0.80      0.78      0.77       200
 
 
 
 Accuracy score:
 0.78
+Running in mode: normal
+
+
+Running: 'Algorithm: 'MultinomialNB', feature-model: 'TF IDF', text-mode: 'normal', 3-grams, reduced-categories: True'
+Average score after 10 fold crossvalidation: 0.6607272434088527
+
+Out of sample:
+Confusion matrix:
+[[ 22   0  21   0]
+ [  3   1   2   1]
+ [ 11   3 125   2]
+ [  4   1   4   0]]
+
+
+Classification report:
+                     precision    recall  f1-score   support
+
+         Bug report       0.55      0.51      0.53        43
+    Content related       0.20      0.14      0.17         7
+           Question       0.82      0.89      0.85       141
+Unclear / Unrelated       0.00      0.00      0.00         9
+
+           accuracy                           0.74       200
+          macro avg       0.39      0.39      0.39       200
+       weighted avg       0.71      0.74      0.72       200
+
+
+
+Accuracy score:
+0.74
+
+
+Running: 'Algorithm: 'ComplementNB', feature-model: 'TF IDF', text-mode: 'normal', 3-grams, reduced-categories: True'
+Average score after 10 fold crossvalidation: 0.6175602676771749
+
+Out of sample:
+Confusion matrix:
+[[ 28   5  10   0]
+ [  3   1   2   1]
+ [ 19   9 107   6]
+ [  5   1   3   0]]
+
+
+Classification report:
+                     precision    recall  f1-score   support
+
+         Bug report       0.51      0.65      0.57        43
+    Content related       0.06      0.14      0.09         7
+           Question       0.88      0.76      0.81       141
+Unclear / Unrelated       0.00      0.00      0.00         9
+
+           accuracy                           0.68       200
+          macro avg       0.36      0.39      0.37       200
+       weighted avg       0.73      0.68      0.70       200
+
+
+
+Accuracy score:
+0.68
+
+
+Running: 'Algorithm: 'RandomForestClassifier', feature-model: 'TF IDF', text-mode: 'normal', 3-grams, reduced-categories: True'
+Average score after 10 fold crossvalidation: 0.7013383858743851
+
+Out of sample:
+Confusion matrix:
+[[ 18   2  23   0]
+ [  0   5   2   0]
+ [  5   8 127   1]
+ [  1   5   2   1]]
+
+
+Classification report:
+                     precision    recall  f1-score   support
+
+         Bug report       0.75      0.42      0.54        43
+    Content related       0.25      0.71      0.37         7
+           Question       0.82      0.90      0.86       141
+Unclear / Unrelated       0.50      0.11      0.18         9
+
+           accuracy                           0.76       200
+          macro avg       0.58      0.54      0.49       200
+       weighted avg       0.77      0.76      0.74       200
+
+
+
+Accuracy score:
+0.755
+
+
+Running: 'Algorithm: 'SVC', feature-model: 'TF IDF', text-mode: 'normal', 3-grams, reduced-categories: True'
+Average score after 10 fold crossvalidation: 0.6753366121099733
+
+Out of sample:
+Confusion matrix:
+[[ 25   2  16   0]
+ [  0   1   4   2]
+ [  8   4 129   0]
+ [  0   2   5   2]]
+
+
+Classification report:
+                     precision    recall  f1-score   support
+
+         Bug report       0.76      0.58      0.66        43
+    Content related       0.11      0.14      0.12         7
+           Question       0.84      0.91      0.87       141
+Unclear / Unrelated       0.50      0.22      0.31         9
+
+           accuracy                           0.79       200
+          macro avg       0.55      0.47      0.49       200
+       weighted avg       0.78      0.79      0.78       200
+
+
+
+Accuracy score:
+0.785
 
 
 
 
 Overview:
-("Algorithm: 'SVC', feature-model: 'TF IDF', text-mode: 'normal', 2-grams, reduced-categories: True", 0.690677632226928)
-("Algorithm: 'SVC', feature-model: 'TF IDF', text-mode: 'normal', 1-grams, reduced-categories: True", 0.686452280114252)
-("Algorithm: 'SVC', feature-model: 'TF IDF', text-mode: 'normal', 3-grams, reduced-categories: True", 0.6829459273121244)
-("Algorithm: 'RandomForestClassifier', feature-model: 'TF IDF', text-mode: 'normal', 1-grams, reduced-categories: True", 0.6758396533044421)
-("Algorithm: 'RandomForestClassifier', feature-model: 'TF IDF', text-mode: 'normal', 2-grams, reduced-categories: True", 0.6744361272530287)
-("Algorithm: 'RandomForestClassifier', feature-model: 'TF IDF', text-mode: 'normal', 3-grams, reduced-categories: True", 0.6716290751502019)
-("Algorithm: 'MultinomialNB', feature-model: 'TF IDF', text-mode: 'normal', 1-grams, reduced-categories: True", 0.6660543681670441)
-("Algorithm: 'MultinomialNB', feature-model: 'TF IDF', text-mode: 'normal', 2-grams, reduced-categories: True", 0.6618487146656161)
-("Algorithm: 'MultinomialNB', feature-model: 'TF IDF', text-mode: 'normal', 3-grams, reduced-categories: True", 0.6541120850980006)
-("Algorithm: 'ComplementNB', feature-model: 'TF IDF', text-mode: 'normal', 1-grams, reduced-categories: True", 0.6287796710331921)
-("Algorithm: 'ComplementNB', feature-model: 'TF IDF', text-mode: 'normal', 2-grams, reduced-categories: True", 0.6259726189303654)
-("Algorithm: 'ComplementNB', feature-model: 'TF IDF', text-mode: 'normal', 3-grams, reduced-categories: True", 0.6196395154141634)
+("Algorithm: 'RandomForestClassifier', feature-model: 'TF IDF', text-mode: 'normal', 1-grams, reduced-categories: True", 0.7057808594694832)
+("Algorithm: 'RandomForestClassifier', feature-model: 'TF IDF', text-mode: 'normal', 3-grams, reduced-categories: True", 0.7013383858743851)
+("Algorithm: 'RandomForestClassifier', feature-model: 'TF IDF', text-mode: 'normal', 2-grams, reduced-categories: True", 0.6969039748447956)
+("Algorithm: 'SVC', feature-model: 'TF IDF', text-mode: 'normal', 1-grams, reduced-categories: True", 0.6855075384987502)
+("Algorithm: 'SVC', feature-model: 'TF IDF', text-mode: 'normal', 2-grams, reduced-categories: True", 0.6804321535112472)
+("Algorithm: 'SVC', feature-model: 'TF IDF', text-mode: 'normal', 3-grams, reduced-categories: True", 0.6753366121099733)
+("Algorithm: 'MultinomialNB', feature-model: 'TF IDF', text-mode: 'normal', 1-grams, reduced-categories: True", 0.6657945658308474)
+("Algorithm: 'MultinomialNB', feature-model: 'TF IDF', text-mode: 'normal', 3-grams, reduced-categories: True", 0.6607272434088527)
+("Algorithm: 'MultinomialNB', feature-model: 'TF IDF', text-mode: 'normal', 2-grams, reduced-categories: True", 0.6600782068854308)
+("Algorithm: 'ComplementNB', feature-model: 'TF IDF', text-mode: 'normal', 1-grams, reduced-categories: True", 0.6277150689349351)
+("Algorithm: 'ComplementNB', feature-model: 'TF IDF', text-mode: 'normal', 2-grams, reduced-categories: True", 0.6245343868418931)
+("Algorithm: 'ComplementNB', feature-model: 'TF IDF', text-mode: 'normal', 3-grams, reduced-categories: True", 0.6175602676771749)
 
 Best model:
-("Algorithm: 'SVC', feature-model: 'TF IDF', text-mode: 'normal', 2-grams, reduced-categories: True", 0.690677632226928)
+("Algorithm: 'RandomForestClassifier', feature-model: 'TF IDF', text-mode: 'normal', 1-grams, reduced-categories: True", 0.7057808594694832)
 
 Process finished with exit code 0
