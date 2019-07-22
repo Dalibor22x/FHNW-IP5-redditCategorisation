@@ -93,11 +93,6 @@ class Algorithms:
             'min_samples_split': [2, 5, 10],
             'n_estimators': [600, 800, 1000, 1200, 1400]
         }
-        # 0.6843403205918619
-        # {'n_estimators': 1000, 'min_samples_split': 5, 'min_samples_leaf': 2, 'max_features': 'sqrt', 'max_depth': 100, 'bootstrap': False}
-
-        # 0.6886559802712701
-        # {'bootstrap': False, 'max_depth': 120, 'max_features': 'sqrt', 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 800}
 
         model = RandomForestClassifier()
         Algorithms.hyperparameter_tuning(model, param_grid, documents, text_model)
