@@ -4,7 +4,6 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.naive_bayes import ComplementNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
-from sklearn.linear_model import ElasticNet
 from sklearn.ensemble import AdaBoostClassifier
 
 from sklearn.model_selection import GridSearchCV
@@ -12,38 +11,79 @@ from sklearn.model_selection import RandomizedSearchCV
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.corpus import stopwords
-import numpy as np
 
 
 class Algorithms:
 
     @staticmethod
     def gaussian_naive_bayes():
-        return GaussianNB()
+        algorithm = {
+            "algorithm": GaussianNB(),
+            "tfidf_max_features": 1500,
+            "tfidf_min_df": 5,
+            "tfidf_max_df": 0.7
+        }
+        return algorithm
 
     @staticmethod
     def complement_naive_bayes():
-        return ComplementNB()
+        algorithm = {
+            "algorithm": ComplementNB(),
+            "tfidf_max_features": 1500,
+            "tfidf_min_df": 5,
+            "tfidf_max_df": 0.7
+        }
+        return algorithm
 
     @staticmethod
     def multinomial_naive_bayes():
-        return MultinomialNB(alpha=6, fit_prior=False)
+        algorithm = {
+            "algorithm": MultinomialNB(alpha=6, fit_prior=False),
+            "tfidf_max_features": 1500,
+            "tfidf_min_df": 6,
+            "tfidf_max_df": 0.5
+        }
+        return algorithm
 
     @staticmethod
     def random_forest():
-        return RandomForestClassifier(bootstrap=False, max_depth=120, max_features="sqrt", min_samples_leaf=2, min_samples_split=2, n_estimators=800)
+        algorithm = {
+            "algorithm": RandomForestClassifier(bootstrap=False, max_depth=120, max_features="sqrt", min_samples_leaf=2, min_samples_split=2, n_estimators=800),
+            "tfidf_max_features": 700,
+            "tfidf_min_df": 6,
+            "tfidf_max_df": 0.5
+        }
+        return algorithm
 
     @staticmethod
     def k_neighbors():
-        return KNeighborsClassifier()
+        algorithm = {
+            "algorithm": KNeighborsClassifier(),
+            "tfidf_max_features": 1500,
+            "tfidf_min_df": 5,
+            "tfidf_max_df": 0.7
+        }
+        return algorithm
 
     @staticmethod
     def svc():
-        return SVC(gamma=0.08838834764831845, C=7)
+        algorithm = {
+            "algorithm": SVC(gamma=0.08838834764831845, C=7),
+            "tfidf_max_features": 1500,
+            "tfidf_min_df": 2,
+            "tfidf_max_df": 0.5
+        }
+        return algorithm
 
     @staticmethod
     def ada_boost():
-        return AdaBoostClassifier()
+        algorithm = {
+            "algorithm": AdaBoostClassifier(),
+            "tfidf_max_features": 1500,
+            "tfidf_min_df": 5,
+            "tfidf_max_df": 0.7
+        }
+        return algorithm
 
     @staticmethod
     def hyperparameter_tuning__multinomial_naive_bayes(documents, text_model):

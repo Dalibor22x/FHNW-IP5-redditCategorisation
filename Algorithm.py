@@ -6,7 +6,7 @@ import numpy as np
 import csv
 
 
-def run(documents, classifier, feature_model, identifier_addition, write_output):
+def run(documents, classifier, feature_model, identifier_addition, write_output, tfidf_max_features, tfidf_min_df, tfidf_max_df):
     identifier = "Algorithm: '{}', feature-model: '{}', {}".format(classifier.__class__.__name__, feature_model, identifier_addition)
     print("\n\nRunning: '{}'".format(identifier))
 
@@ -18,7 +18,7 @@ def run(documents, classifier, feature_model, identifier_addition, write_output)
         X = vectorizer.fit_transform(docs)
         X = X.toarray()
     else:
-        tfidfconverter = TfidfVectorizer(max_features=1500, min_df=5, max_df=0.7, stop_words=stopwords.words('english'))
+        tfidfconverter = TfidfVectorizer(max_features=tfidf_max_features, min_df=tfidf_min_df, max_df=tfidf_max_df, stop_words=stopwords.words('english'))
         X = tfidfconverter.fit_transform(docs).toarray()
 
     out_of_sample_threshold = len(X) - 200
