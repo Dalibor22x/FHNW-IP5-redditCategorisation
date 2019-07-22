@@ -11,17 +11,7 @@ def run(documents, classifier, feature_model, identifier_addition, write_output,
     identifier = "Algorithm: '{}', feature-model: '{}', {}".format(classifier.__class__.__name__, feature_model, identifier_addition)
     print("\n\nRunning: '{}'".format(identifier))
 
-    docs = list(map(lambda x: ' '.join(x[0]), documents))
-    y = list(map(lambda x: x[1], documents))
-
-    if feature_model == "Bag of Words":
-        vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7, stop_words=stopwords.words('english'))
-        X = vectorizer.fit_transform(docs)
-        X = X.toarray()
-    else:
-        tfidfconverter = TfidfVectorizer(max_features=tfidf_max_features, min_df=tfidf_min_df, max_df=tfidf_max_df, stop_words=stopwords.words('english'))
-        X = tfidfconverter.fit_transform(docs).toarray()
-
+    X, y, docs = get_X_and_y(documents, feature_model, True, tfidf_max_features, tfidf_min_df, tfidf_max_df)
     out_of_sample_threshold = len(X) - 200
 
     out_of_sample_X = X[out_of_sample_threshold:]
@@ -80,17 +70,43 @@ def run(documents, classifier, feature_model, identifier_addition, write_output,
             csv_out.writerow(['test_set', 'prediction'])
             for row in prediction:
                 csv_out.writerow(row)
+                
     elif write_output and categorize_uncategorized:
-        uncategorized_documents = CSVHandler.get_document(text_mode="normal", n=2, reduced_categories=True, categorize_uncategorized=False)
-        #
-        # # Write to CSV
-        # file_name = identifier.replace(" ", "_").replace("'", "").replace(":", "").replace(",", "_")
-        # with open("data/output/" + file_name + ".csv", 'w') as out:
-        #     csv_out = csv.writer(out, delimiter="|")
-        #     csv_out.writerow(['test_set', 'prediction'])
-        #     for row in prediction:
-        #         csv_out.writerow(row)
+        uncategorized_documents = CSVHandler.get_document(text_mode="normal", n=2, reduced_categories=True, categorized=False)
+
+        X_train, _, u_docs = get_X_and_y(uncategorized_documents, feature_model, False, tfidf_max_features, tfidf_min_df, tfidf_max_df)
+        y_pred = classifier.predict(X_train)
+        uncategorized_identifier = "uncategorized_" + identifier
+        prediction = list(zip(docs, y_pred))
+
+        # Write to CSV
+        file_name = uncategorized_identifier.replace(" ", "_").replace("'", "").replace(":", "").replace(",", "_")
+        with open("data/output/uncategorized/" + file_name + ".csv", 'w') as out:
+            csv_out = csv.writer(out, delimiter="|")
+            csv_out.writerow(['test_set', 'prediction'])
+            for row in prediction:
+                csv_out.writerow(row)
 
 
 
     return (identifier, np.mean(scores))
+
+
+def get_X_and_y(documents, feature_model, categorized, tfidf_max_features, tfidf_min_df, tfidf_max_df):
+    print(documents)
+    if categorized:
+        docs = list(map(lambda x: ' '.join(x[0]), documents))
+        y = list(map(lambda x: x[1], documents))
+    else:
+        docs = list(map(lambda x: ' '.join(x), documents))
+        y = []
+
+    if feature_model == "Bag of Words":
+        vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7, stop_words=stopwords.words('english'))
+        X = vectorizer.fit_transform(docs)
+        X = X.toarray()
+    else:
+        tfidfconverter = TfidfVectorizer(max_features=tfidf_max_features, min_df=tfidf_min_df, max_df=tfidf_max_df, stop_words=stopwords.words('english'))
+        X = tfidfconverter.fit_transform(docs).toarray()
+
+    return X, y, docs
