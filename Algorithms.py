@@ -76,15 +76,6 @@ class Algorithms:
 
     @staticmethod
     def hyperparameter_tuning__random_forest(documents, text_model):
-        # param_grid = {
-        #     'bootstrap': [True, False],
-        #     'max_depth': [None, 80, 90, 100, 110],
-        #     'max_features': [2, 3, "auto"],
-        #     'min_samples_leaf': [1, 3, 4, 5],
-        #     'min_samples_split': [2, 8, 10, 12],
-        #     'n_estimators': [100, 200, 300, 1000]
-        # }
-
         param_grid = {
             'bootstrap': [False],
             'max_depth': [80, 90, 100, 110, 120],
