@@ -12,7 +12,7 @@ possible_n_grams = [1, 2, 3]
 # reduced_categories_possibilities = [True, False]
 reduced_categories_possibilities = [True]
 algorithms = Algorithms.Algorithms
-all_algorithms = [
+algorithms_list = [
     algorithms.multinomial_naive_bayes(),
     # algorithms.complement_naive_bayes(),
     # algorithms.gaussian_naive_bayes(),
@@ -43,7 +43,7 @@ def evaluate_best_model():
                                                                                                  reduced_categories)
 
                 for feature_model in feature_models:
-                    for algorithm in all_algorithms:
+                    for algorithm in algorithms_list:
                         model = algorithm["algorithm"]
                         tfidf_max_features = algorithm["tfidf_max_features"]
                         tfidf_min_df = algorithm["tfidf_min_df"]
