@@ -13,11 +13,11 @@ possible_n_grams = [1, 2, 3]
 reduced_categories_possibilities = [True]
 algorithms = Algorithms.Algorithms
 all_algorithms = [
-    # algorithms.multinomial_naive_bayes(),
+    algorithms.multinomial_naive_bayes(),
     # algorithms.complement_naive_bayes(),
     # algorithms.gaussian_naive_bayes(),
     algorithms.random_forest(),
-    # algorithms.svc(),
+    algorithms.svc(),
     # algorithms.k_neighbors(),
     # algorithms.ada_boost()
 ]
@@ -48,7 +48,7 @@ def evaluate_best_model():
                         tfidf_max_features = algorithm["tfidf_max_features"]
                         tfidf_min_df = algorithm["tfidf_min_df"]
                         tfidf_max_df = algorithm["tfidf_max_df"]
-                        scores.append(Algorithm.run(documents, a, model, identifier_addition, True, True, tfidf_max_features, tfidf_min_df, tfidf_max_df))
+                        scores.append(Algorithm.run(documents, a, model, identifier_addition, False, True, tfidf_max_features, tfidf_min_df, tfidf_max_df))
 
     print("\n\n\n\nOverview:")
     scores = sorted(scores, key=lambda s: (-s[1], s[0]))

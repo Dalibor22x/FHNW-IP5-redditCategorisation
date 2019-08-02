@@ -40,7 +40,7 @@ def get_document(text_mode, n, reduced_categories, categorized=True):
         excluded_categories = [
                                 "Advertisement",
                                 "Feature information",
-                                "Feature request",
+                                # "Feature request",
                                 "Feature shortcoming",
                                 "Feature strength",
                                 "General complaint",
@@ -49,7 +49,7 @@ def get_document(text_mode, n, reduced_categories, categorized=True):
                                 "Social interaction",
                                 "Software Constraint",
                                 "Software extension",
-                                # "Content related",
+                                "Content related",
                                 # "Unclear / Unrelated"
                                 ]
     else:

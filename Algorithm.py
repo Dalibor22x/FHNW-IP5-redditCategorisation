@@ -93,7 +93,6 @@ def run(documents, classifier, feature_model, identifier_addition, write_output,
 
 
 def get_X_and_y(documents, feature_model, categorized, tfidf_max_features, tfidf_min_df, tfidf_max_df):
-    print(documents)
     if categorized:
         docs = list(map(lambda x: ' '.join(x[0]), documents))
         y = list(map(lambda x: x[1], documents))
