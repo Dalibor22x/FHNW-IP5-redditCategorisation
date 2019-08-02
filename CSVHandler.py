@@ -6,8 +6,6 @@ from nltk.stem import PorterStemmer, WordNetLemmatizer
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 
-
-ps = PorterStemmer()  # for stemming the words
 # TODO: Download only if necessary
 # nltk.download('stopwords')
 # nltk.download('punkt')
@@ -95,6 +93,7 @@ def get_preprocessed_tokens(words, n):
 
     tokenizer = RegexpTokenizer(r'\w+')
     word_tokens = tokenizer.tokenize(words)
+    ps = PorterStemmer()  # for stemming the words
     lemmatizer = WordNetLemmatizer()
 
     filtered_sentence = []
