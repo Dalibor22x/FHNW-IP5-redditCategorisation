@@ -42,13 +42,13 @@ def evaluate_best_model():
                 identifier_addition = "text-mode: '{}', {}-grams, reduced-categories: {}".format(text_mode, n,
                                                                                                  reduced_categories)
 
-                for model in feature_models:
+                for feature_model in feature_models:
                     for algorithm in all_algorithms:
-                        a = algorithm["algorithm"]
+                        model = algorithm["algorithm"]
                         tfidf_max_features = algorithm["tfidf_max_features"]
                         tfidf_min_df = algorithm["tfidf_min_df"]
                         tfidf_max_df = algorithm["tfidf_max_df"]
-                        scores.append(Algorithm.run(documents, a, model, identifier_addition, False, True, tfidf_max_features, tfidf_min_df, tfidf_max_df))
+                        scores.append(Algorithm.run(documents, model, feature_model, identifier_addition, False, True, tfidf_max_features, tfidf_min_df, tfidf_max_df))
 
     print("\n\n\n\nOverview:")
     scores = sorted(scores, key=lambda s: (-s[1], s[0]))
