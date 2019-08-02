@@ -90,14 +90,6 @@ def get_document(text_mode, n, reduced_categories, categorized=True):
         return documents
 
 
-def get_all_words(document):
-    allWords = []
-    for row in document:
-        for tokens in row[0]:
-            allWords.append(tokens)
-    return allWords
-
-
 def get_clean_tokens(words, n):
     words = re.sub(r"http\S+", "", words)  # Remove links
 
