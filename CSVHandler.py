@@ -101,7 +101,8 @@ def get_preprocessed_tokens(words, n):
 
     for w in word_tokens:
         if w not in stop_words:
-            w = ps.stem(w.lower())
+            w = w.lower()
+            w = ps.stem(w)
             w = lemmatizer.lemmatize(w, pos='v')
             filtered_sentence.append(w)
 
