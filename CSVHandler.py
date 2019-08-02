@@ -66,18 +66,18 @@ def get_document(text_mode, n, reduced_categories, categorized=True):
             if categorized:
                 if row[0] != '' and row[0] not in excluded_categories:
                     if text_mode == "title_only":
-                        documents.append(((get_clean_tokens(row[2], n)), row[0]))
+                        documents.append(((get_preprocessed_tokens(row[2], n)), row[0]))
                     elif text_mode == "text_only":
-                        documents.append(((get_clean_tokens(row[3], n)), row[0]))
+                        documents.append(((get_preprocessed_tokens(row[3], n)), row[0]))
                     else:
-                        documents.append(((get_clean_tokens(row[2] + " " + row[3], n)), row[0]))
+                        documents.append(((get_preprocessed_tokens(row[2] + " " + row[3], n)), row[0]))
             elif not categorized:
                 if text_mode == "title_only":
-                    documents.append((get_clean_tokens(row[2], n)))
+                    documents.append((get_preprocessed_tokens(row[2], n)))
                 elif text_mode == "text_only":
-                    documents.append((get_clean_tokens(row[3], n)))
+                    documents.append((get_preprocessed_tokens(row[3], n)))
                 else:
-                    documents.append((get_clean_tokens(row[2] + " " + row[3], n)))
+                    documents.append((get_preprocessed_tokens(row[2] + " " + row[3], n)))
 
 
         # Write to CSV
@@ -90,7 +90,7 @@ def get_document(text_mode, n, reduced_categories, categorized=True):
         return documents
 
 
-def get_clean_tokens(words, n):
+def get_preprocessed_tokens(words, n):
     words = re.sub(r"http\S+", "", words)  # Remove links
 
     tokenizer = RegexpTokenizer(r'\w+')
