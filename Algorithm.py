@@ -7,8 +7,8 @@ import csv
 import CSVHandler
 
 
-def run(documents, classifier, feature_model, identifier_addition, write_output, categorize_uncategorized, tfidf_max_features, tfidf_min_df, tfidf_max_df):
-    identifier = "Algorithm: '{}', feature-model: '{}', {}".format(classifier.__class__.__name__, feature_model, identifier_addition)
+def run(documents, model, feature_model, identifier_addition, write_output, categorize_uncategorized, tfidf_max_features, tfidf_min_df, tfidf_max_df):
+    identifier = "Algorithm: '{}', feature-model: '{}', {}".format(model.__class__.__name__, feature_model, identifier_addition)
     print("\n\nRunning: '{}'".format(identifier))
 
     X, y, docs = get_X_and_y(documents, feature_model, True, tfidf_max_features, tfidf_min_df, tfidf_max_df)
@@ -34,18 +34,18 @@ def run(documents, classifier, feature_model, identifier_addition, write_output,
         y_test = y_train.pop(k)
         y_train = np.concatenate(y_train)
 
-        scores.append(classifier.fit(X_train, y_train).score(X_test, y_test))
+        scores.append(model.fit(X_train, y_train).score(X_test, y_test))
 
     print("Average score after {} fold crossvalidation: {}".format(k_folds, np.mean(scores)))
 
     print("\nOut of sample:")
 
-    classifier.fit(X, y)
+    model.fit(X, y)
 
     X_train = out_of_sample_X
     y_test = out_of_sample_y
 
-    y_pred = classifier.predict(X_train)
+    y_pred = model.predict(X_train)
 
     print("Confusion matrix:")
     print(confusion_matrix(y_test, y_pred))
@@ -56,7 +56,6 @@ def run(documents, classifier, feature_model, identifier_addition, write_output,
     print("\n\nAccuracy score:")
     accuracy = accuracy_score(y_test, y_pred)
     print(accuracy)
-
 
     if write_output and not categorize_uncategorized:
         out_of_sample_x_data = docs[:out_of_sample_threshold]
@@ -75,7 +74,7 @@ def run(documents, classifier, feature_model, identifier_addition, write_output,
         uncategorized_documents = CSVHandler.get_document(text_mode="normal", n=2, reduced_categories=True, categorized=False)
 
         X_train, _, u_docs = get_X_and_y(uncategorized_documents, feature_model, False, tfidf_max_features, tfidf_min_df, tfidf_max_df)
-        y_pred = classifier.predict(X_train)
+        y_pred = model.predict(X_train)
         uncategorized_identifier = "uncategorized_" + identifier
         prediction = list(zip(docs, y_pred))
 
@@ -86,8 +85,6 @@ def run(documents, classifier, feature_model, identifier_addition, write_output,
             csv_out.writerow(['test_set', 'prediction'])
             for row in prediction:
                 csv_out.writerow(row)
-
-
 
     return (identifier, np.mean(scores))
 

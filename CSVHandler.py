@@ -34,6 +34,8 @@ def prepare_subreddits():
 def get_document(text_mode, n, reduced_categories, categorized=True):
     print("Running in mode: " + text_mode)
 
+    old_categories = True
+
     if reduced_categories:
         excluded_categories = [
                                 "Advertisement",
@@ -62,6 +64,11 @@ def get_document(text_mode, n, reduced_categories, categorized=True):
             # if row[0] in excluded_categories:
             #     row[0] = "Other"
             if categorized:
+                if old_categories:
+                    row[0] = row[0].split(';')[0]
+                else:
+                    row[0] = row[0].split(';')[1]
+
                 if row[0] != '' and row[0] not in excluded_categories:
                     if text_mode == "title_only":
                         documents.append(((get_preprocessed_tokens(row[2], n)), row[0]))
