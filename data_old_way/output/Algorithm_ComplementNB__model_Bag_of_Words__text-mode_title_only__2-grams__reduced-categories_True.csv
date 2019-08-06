@@ -1,0 +1,201 @@
+test_set|prediction
+('pen pressur pressur option option grey', 'Question')|Question
+('i need need help help graphic', 'Question')|Bug report
+('warp tool tool help', 'Question')|Question
+('help eras eras part part text', 'Question')|Bug report
+('help color color mix', 'Question')|Bug report
+('help cant cant disconnect disconnect line line other other word word matter matter i i line line keep keep follw follw cursor cursor help', 'Bug report')|Bug report
+('troubl delet delet thing thing around around letter', 'Question')|Question
+('my dude dude should should blue blue c c line line if if would would i i go go gc', 'Question')|Bug report
+('', 'Question')|Bug report
+('blob brush brush shape shape builder builder help', 'Question')|Bug report
+('best laptop laptop comput comput illustr', 'Question')|Bug report
+('can anyon anyon give give feedback feedback pleas', 'Question')|Bug report
+('here goe goe noth noth ani ani think', 'Question')|Bug report
+('whi i i abl abl save save pictur pictur png', 'Bug report')|Question
+('export select select black black color color background background bug', 'Bug report')|Bug report
+('action illustr', 'Question')|Question
+('help im im tri tri use use edit edit color color function function everyth everyth grey', 'Bug report')|Question
+('i tri tri emphas emphas length length two two l l ad ad line line ani ani think think i i rooki', 'Question')|Question
+('quick noob noob question', 'Question')|Bug report
+('best pay pay illustr illustr plugin plugin avail', 'Question')|Question
+('grain textur textur outlin outlin get get rid rid there there stroke stroke object', 'Question')|Bug report
+('live paint paint gradient gradient clip', 'Question')|Bug report
+('i need need help help easi easi fix fix pleas pleas help help transpar transpar mask mask issu', 'Bug report')|Question
+('colour space space question', 'Bug report')|Question
+('creativ block', 'Question')|Question
+('help how how make make illustr illustr seamlessli seamlessli wrap wrap around around cylind cylind without without see see join', 'Question')|Question
+('whi i i two two tool tool pallett pallett ai', 'Bug report')|Question
+('best way way learn learn thing thing illustr', 'Question')|Bug report
+('youtub avatar avatar channel channel banner', 'Question')|Question
+('easiest way way add add fill fill color color compound compound shape', 'Question')|Question
+('can chrome chrome spell spell check check languag languag base base keyboard keyboard layout', 'Question')|Bug report
+('chrome freez freez hang hang second second random', 'Bug report')|Question
+('how i i turn turn dark dark mode', 'Question')|Question
+('can chang chang googl googl chrome chrome video video player player android', 'Question')|Bug report
+('trigger memori memori leak leak chrome chrome 73 73 without without js', 'Bug report')|Bug report
+('some annoy annoy googl googl chrome chrome issu issu bug', 'Bug report')|Bug report
+('chrome display display everyth everyth includ includ webpag webpag i i zoom zoom 100 100 zoom zoom 90 90 show show normal', 'Bug report')|Question
+('chrome work work latest latest updat', 'Bug report')|Question
+('empti home home page page dark dark mode', 'Bug report')|Question
+('stop chrome chrome refresh refresh tab', 'Bug report')|Bug report
+('autopaus video video sound sound play play second', 'Bug report')|Bug report
+('weird lagg lagg render render issu issu chrome', 'Bug report')|Question
+('chrome smooth smooth scroller scroller break break svg svg break break new new updat', 'Bug report')|Bug report
+('chrome suddenli suddenli download download like like crazi crazi new new updat updat phone phone be', 'Bug report')|Question
+('dark mode mode chrome', 'Bug report')|Bug report
+('io chrome chrome support support flash flash now', 'Question')|Question
+('pleas help help chrome chrome updat', 'Bug report')|Question
+('be chrome chrome extens extens tell tell own own news news outlet outlet whose whose domain domain i', 'Question')|Question
+('android how how i i save save password password http http author author page', 'Question')|Question
+('i think think i i need need technic technic help', 'Bug report')|Bug report
+('be file file show show previou previou chrome chrome session', 'Bug report')|Question
+('affect perform perform instal instal lot lot extens extens disabl', 'Question')|Question
+('how remov remov websit websit suggest suggest type type address address bar', 'Question')|Question
+('be possibl possibl differ differ default default tab tab open open differ differ comput comput log log googl googl account', 'Question')|Question
+('help be be possibl possibl restor restor tab', 'Question')|Bug report
+('help chrome chrome automat automat open open everi everi i i startup startup pc pc doe doe anyon anyon know know fix', 'Bug report')|Question
+('chrome randomli randomli unabl unabl load load anyth anyth edg edg fine', 'Bug report')|Question
+('use url url search search i i get get blue blue result', 'Question')|Question
+('what shortcut shortcut move move cursor cursor see see pictur', 'Question')|Question
+('can remov remov emoji emoji option option right right click', 'Question')|Question
+('custom ui ui chrome chrome chromium chromium possibl', 'Question')|Bug report
+('1 highlight highlight differ differ text text color color 2 2 classifi classifi highlight highlight text text 3 3 export export result result text text file', 'Question')|Question
+('new tab tab add add shortcut shortcut how how to to remov', 'Question')|Question
+('chrome test test separ separ toolbar toolbar button button menu menu extens extens canari', 'Bug report')|Bug report
+('i screw screw view view get get right right help', 'Bug report')|Question
+('be new new thing thing inact inact tab tab highlight highlight hover', 'Bug report')|Question
+('need help help backup backup import', 'Question')|Question
+('chrome tri tri access access webcam', 'Bug report')|Question
+('chrome error error gener gener print print preview preview larger larger 4gb 4gb idea idea fix', 'Bug report')|Question
+('how prove prove potenti potenti employ employ i i know know use use excel excel when when i i use use current current assembl assembl line line posit', 'Question')|Question
+('how get get pmt pmt function function to to work work after after chang chang a a line', 'Question')|Question
+('weird excel excel 2016 2016 graphic graphic glitch glitch ribbon', 'Bug report')|Question
+('how extract extract text text space', 'Question')|Question
+('need sort sort tabl tabl zip zip ascend ascend order order first first date date ascend ascend order order second second how how i i sort sort without without nullifi nullifi first first sort', 'Question')|Question
+('lat long long data data how how i i return return locat locat closest closest proxim proxim anoth anoth locat', 'Question')|Bug report
+('formula long long take take earn earn certain certain irr', 'Question')|Question
+('copi specif specif data data multipl multipl tabl tabl anoth anoth one one base base date', 'Question')|Question
+('match valu valu 1 1 column column 2 2 valu valu anoth anoth column', 'Question')|Question
+('count number number cell cell match match criteria criteria base base anoth anoth criteria criteria base base index index match match meet meet two two criteria', 'Question')|Bug report
+('help with with select select cell cell that that don don contain contain certain certain word', 'Question')|Question
+('help combin combin multipl multipl if if and and statement statement one one formula formula multipl multipl fail fail statement', 'Question')|Question
+('simultan queri queri multipl multipl boolean boolean field field assist assist make make tick tick box box ui', 'Question')|Question
+('if refer refer cell cell equal equal specif specif text text creat creat drop drop list', 'Question')|Question
+('vba declar declar multipl multipl variabl variabl assist', 'Question')|Bug report
+('autom file file data data metadata metadata mac', 'Question')|Bug report
+('total time', 'Question')|Question
+('can i i set set formula formula valu valu column column chang chang input input cell cell chang chang certain certain time time period period day day count', 'Question')|Question
+('lower cell cell automat automat fill fill color color i i press press enter enter fill fill cell cell info', 'Question')|Question
+('help jump jump formula', 'Question')|Question
+('question 70 70 779 779 exam', 'Question')|Question
+('increment custom custom sequenc sequenc formula formula rather rather drag', 'Question')|Question
+('brows file file folder folder run run macro', 'Bug report')|Question
+('a number number countdown countdown i i make make go go click click button button press', 'Question')|Bug report
+('help queri queri exchang exchang server server recur recur calendar calendar event', 'Question')|Bug report
+('what function function tutori tutori i i look look order order import import specif specif text text base base instruct instruct base base give give number number valu', 'Question')|Bug report
+('input postal postal code', 'Question')|Question
+('merg cell cell with with concat', 'Question')|Bug report
+('show cell cell valu valu cell cell select', 'Question')|Question
+('problem use use calcul calcul field field pivot pivot tabl tabl calcul calcul price price chang chang previou previou month', 'Question')|Question
+('automat date date stamp stamp problem', 'Question')|Bug report
+('how i i split split column column data data mile mile long long without without mess mess formula formula graph graph use', 'Question')|Question
+('question regard regard loop loop ring ring cell cell formula formula includ includ date date string', 'Question')|Question
+('i copi copi past past word word doc doc content content excel excel sheet sheet appli appli text text column column creat creat follow follow issu', 'Question')|Question
+('pleas help help creat creat formula formula calcul calcul storag storag cost cost work work problem', 'Question')|Question
+('remov all all but but one one duplic', 'Question')|Question
+('match exact exact text text use use wildcard wildcard within within cell', 'Question')|Question
+('center across across select select help help without without data data besid', 'Bug report')|Bug report
+('data transform transform add add set set observ observ row', 'Question')|Question
+('addit criteria criteria ad ad exist exist program', 'Question')|Bug report
+('sla if if or or and and statement', 'Question')|Question
+('subtract field field pivot pivot tabl', 'Question')|Question
+('past content content excel excel sheet sheet word word document document certain certain format format automat', 'Question')|Question
+('how i i model model continu continu uniform uniform variabl variabl bind bind 0 0 01 01 0 0 10', 'Question')|Question
+('how i i read read x x valu valu plot', 'Question')|Question
+('be way way increment increment certain certain cell cell refer refer format format painter', 'Question')|Bug report
+('appli custom custom number number format', 'Bug report')|Bug report
+('repeat formula formula everi everi x x number number row', 'Question')|Question
+('i need need extract extract column column imaginari imaginari number number graph', 'Question')|Question
+('how to to get get averag averag date date ring ring separ separ excel excel sheet sheet workbook', 'Question')|Question
+('facebook instagram', 'Bug report')|Question
+('remov forward forward backward backward button button to to the the leave leave the the search search box', 'Question')|Question
+('think googl googl allow allow normal normal googl googl com com fennec fennec eu eu android android browser browser ballot', 'Question')|Bug report
+('market firefox firefox 2 2 3 3 word word describ describ better better competit', 'Question')|Bug report
+('malici googl googl behavior behavior target target firefox', 'Bug report')|Question
+('chang search search engin engin hotkey hotkey miss', 'Bug report')|Question
+('so firefox firefox note note dead', 'Question')|Question
+('dark statu statu nav nav bar bar firefox firefox android', 'Question')|Question
+('firefox suddenli suddenli play play tv tv youtub youtub com', 'Bug report')|Question
+('instagram work work firefox', 'Bug report')|Question
+('all cooki cooki block', 'Bug report')|Bug report
+('firefox url url autofil autofil box box problem', 'Bug report')|Question
+('how automat automat append append filenam filenam 1 1 name name alreadi alreadi exist', 'Question')|Question
+('unknown notif', 'Bug report')|Question
+('dark mode mode firefox firefox window', 'Question')|Question
+('firefox redirect', 'Bug report')|Bug report
+('i save save data data ff ff lightbeam lightbeam pleas pleas help', 'Bug report')|Question
+('fextralif wiki wiki caus caus monitor monitor flicker', 'Bug report')|Question
+('insan ram ram usag usag sinc sinc 66', 'Bug report')|Question
+('firefox forc forc bodi bodi white', 'Bug report')|Question
+('we need need everyth everyth destroy destroy googl googl recaptcha', 'Bug report')|Bug report
+('can firefox firefox clear clear data data exit exit without without clear clear cooki', 'Question')|Bug report
+('doe firefox firefox support support dn dn tl', 'Question')|Bug report
+('whi dn dn http http enabl enabl default', 'Question')|Question
+('firefox nightli nightli android android show show bold bold font font cursiv', 'Bug report')|Bug report
+('bing startup', 'Bug report')|Question
+('miss maco maco context context menu menu e e g g servic', 'Bug report')|Bug report
+('be firefox firefox soft soft embargo embargo how how support support normal normal user', 'Question')|Question
+('it feel feel like like less less less less websit websit work work firefox firefox support support render render correctli', 'Bug report')|Bug report
+('youtub twitch twitch slow slow whole whole comput comput crawl', 'Bug report')|Question
+('firefox 66 66 0 0 1 1 releas', 'Question')|Bug report
+('set bilingu bilingu print print revers revers invert invert two two languag', 'Question')|Question
+('can chang chang findchangelist findchangelist txt txt lock lock anyon anyon get get key', 'Question')|Bug report
+('templat rectangl rectangl invert invert overlap overlap i i turn', 'Question')|Bug report
+('collabor limit limit access access asset', 'Question')|Question
+('fail export export pdf', 'Bug report')|Bug report
+('best practic practic imag imag copi', 'Question')|Question
+('propos dynam dynam content', 'Question')|Question
+('match cmyk cmyk color color hex hex number', 'Question')|Question
+('no link link miss miss photo photo still still blurri blurri open open file file anoth anoth comput', 'Bug report')|Question
+('page order order booklet booklet help', 'Bug report')|Question
+('bleed without without bleed bleed mark', 'Question')|Question
+('pack project project raster raster version version imag imag link link avoid avoid illustr illustr file', 'Question')|Bug report
+('be way way includ includ certain certain page page document document indesign indesign book', 'Question')|Question
+('i googl googl still still struggl struggl how how determin determin whether whether imag imag see see screen screen pixel pixel print', 'Question')|Question
+('turn ligatur ligatur one one letter letter combin', 'Question')|Bug report
+('have strang strang issu issu idcc idcc 2019 2019 open open recent recent open open everyth everyth file file i i tri tri open', 'Bug report')|Bug report
+('how make make pdf pdf self self destruct', 'Question')|Bug report
+('how put put simpl simpl vector vector graphic graphic indesign indesign document', 'Question')|Question
+('issu transpar transpar print print pdf', 'Bug report')|Bug report
+('be way way convert convert master master page page number number outlin', 'Question')|Bug report
+('how export export 36 36 page page idd idd separ separ jpeg jpeg file', 'Question')|Bug report
+('what 1 1 1 1 110 110 lead lead mean', 'Question')|Bug report
+('what correct correct way way format format regular regular text text block block mix mix font font weight', 'Question')|Bug report
+('googl font font indesign', 'Question')|Question
+('xml attribut attribut text', 'Question')|Bug report
+('ani way way un un trace trace text text trace', 'Question')|Question
+('export multipl multipl pdf', 'Question')|Question
+('if i i updat updat style style layout layout templat templat i i use use creat creat sever sever document document document document use use templat templat also also updat', 'Question')|Bug report
+('collabor cloud cloud drive drive lock lock file file work', 'Question')|Bug report
+('text text text frame frame justifi justifi vertic vertic anchor anchor object object frame frame way way around', 'Question')|Bug report
+('index across across book book document', 'Question')|Question
+('can someon someon help help set set page', 'Question')|Bug report
+('suggest mock mock assign assign hone hone skill', 'Question')|Bug report
+('start project project indesign', 'Question')|Bug report
+('photoshop equival equival clip clip mask', 'Question')|Question
+('tri print print 5x7 5x7 project project need need help', 'Question')|Bug report
+('how teach teach indesign indesign prefer prefer word word break', 'Question')|Bug report
+('balanc two two column column paragraph paragraph style style haaaaalp', 'Question')|Question
+('interact pdf', 'Question')|Bug report
+('ani advic advic best best practic practic work work larg larg block block text text imag imag place place throughout', 'Question')|Bug report
+('indesign pleas pleas imag imag i i give give heck heck i i anger', 'Bug report')|Bug report
+('be way way simultan simultan select select two two imag imag place place text text frame frame anchor', 'Question')|Bug report
+('data merg merg condit condit show', 'Bug report')|Bug report
+('how would would i i distribut distribut order order list list evenli evenli across across multipl multipl page', 'Question')|Question
+('tabl content content content', 'Bug report')|Bug report
+('how i i remov remov gridlin', 'Question')|Question
+('copi past past bullet bullet list list one one document document anoth anoth rememb rememb format', 'Bug report')|Bug report
+('pleas help help love love of of god', 'Bug report')|Bug report
+('music featur featur still still work work insta insta stori', 'Bug report')|Question
+('sinc instagram instagram account account get get fals fals deactiv deactiv i i make make new new account account i i tri tri log log app app let let be be way way around', 'Bug report')|Question

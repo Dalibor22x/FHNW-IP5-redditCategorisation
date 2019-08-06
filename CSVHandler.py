@@ -34,7 +34,7 @@ def prepare_subreddits():
 def get_document(text_mode, n, reduced_categories, categorized=True):
     print("Running in mode: " + text_mode)
 
-    old_categories = True
+    old_categories = False
 
     if reduced_categories:
         excluded_categories = [
@@ -67,7 +67,10 @@ def get_document(text_mode, n, reduced_categories, categorized=True):
                 if old_categories:
                     row[0] = row[0].split(';')[0]
                 else:
-                    row[0] = row[0].split(';')[1]
+                    if ';' in row[0]:
+                        row[0] = row[0].split(';')[1]
+                    if row[0] == "Feature request" or row[0] == "Usability":
+                        row[0] = "Feature request / Usability"
 
                 if row[0] != '' and row[0] not in excluded_categories:
                     if text_mode == "title_only":
