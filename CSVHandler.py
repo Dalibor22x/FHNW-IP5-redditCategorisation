@@ -7,8 +7,8 @@ from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 
 # TODO: Download only if necessary
-# nltk.download('stopwords')
-# nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('punkt')
 nltk.download('wordnet')
 stop_words = set(stopwords.words('english'))
 
