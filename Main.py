@@ -71,7 +71,7 @@ def evaluate_best_parameters():
 def evaluate_best_TFIDF_parameters():
     documents = CSVHandler.get_document("normal", 2, True)
     scores = []
-    model = "TF IDF"
+    feature_model = "TF IDF"
 
     tfidf_max_features = [1500, 1000, 700, 2000]
     tfidf_min_df = [5, 2, 6, 9]
@@ -82,7 +82,7 @@ def evaluate_best_TFIDF_parameters():
             for max_df in tfidf_max_df:
                 identifier_addition = "text-mode: 'normal', 2-grams, reduced-categories: True, max_features: {}, min_df: {}, max_df: {}".format(mf, min_df, max_df)
                 algorithm = algorithms.random_forest()["algorithm"]
-                scores.append(Algorithm.run(documents, algorithm, model, identifier_addition, True, False, mf, min_df, max_df))
+                scores.append(Algorithm.run(documents, algorithm, feature_model, identifier_addition, True, False, mf, min_df, max_df))
 
     print("\n\n\n\nOverview:")
     scores = sorted(scores, key=lambda s: (-s[1], s[0]))

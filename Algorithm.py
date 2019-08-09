@@ -7,7 +7,25 @@ import csv
 import CSVHandler
 
 
-def run(documents, model, feature_model, identifier_addition, write_output, categorize_uncategorized, tfidf_max_features, tfidf_min_df, tfidf_max_df):
+def run(documents, model, feature_model, identifier_addition, write_output, predict_uncategorized, tfidf_max_features, tfidf_min_df, tfidf_max_df):
+    """
+
+    TODO: Describe types etc.
+    :param documents: The preprocessed documents to train and test on
+    :param model: The sklearn model to be trained and tested (e.g. RandomForestClassifier)
+    :param feature_model: TODO: The model for transforming the features (e.g. Bag of Words or TF IDF)
+    :param identifier_addition: Additional information to add to the identifier in order to make it better distinguishable
+                                … used for file name and evaluation …
+    :param write_output: A boolean value whether or not to write the predictions into a CSV file. If predict_uncategorized
+                         is set to True, the data used for prediction is the remaining data entries which are not categorized.
+                         If it is set to False, it will use out-of-sample data (which is categorized) for the prediction.
+    :param predict_uncategorized: A boolean value used in combination with write_output whether or not to predict
+                                  on uncategorized data. Is only showing results when write_output is true.
+    :param tfidf_max_features:
+    :param tfidf_min_df:
+    :param tfidf_max_df:
+    :return:
+    """
     identifier = "Algorithm: '{}', feature-model: '{}', {}".format(model.__class__.__name__, feature_model, identifier_addition)
     print("\n\nRunning: '{}'".format(identifier))
 
@@ -57,7 +75,7 @@ def run(documents, model, feature_model, identifier_addition, write_output, cate
     accuracy = accuracy_score(y_test, y_pred)
     print(accuracy)
 
-    if write_output and not categorize_uncategorized:
+    if write_output and not predict_uncategorized:
         out_of_sample_x_data = docs[:out_of_sample_threshold]
         out_of_sample_y_data = y[:out_of_sample_threshold]
         prediction = list(zip(zip(out_of_sample_x_data, out_of_sample_y_data), y_pred))
@@ -70,7 +88,7 @@ def run(documents, model, feature_model, identifier_addition, write_output, cate
             for row in prediction:
                 csv_out.writerow(row)
                 
-    elif write_output and categorize_uncategorized:
+    elif write_output and predict_uncategorized:
         uncategorized_documents = CSVHandler.get_document(text_mode="normal", n=2, reduced_categories=True, categorized=False)
 
         X_train, _, u_docs = get_X_and_y(uncategorized_documents, feature_model, False, tfidf_max_features, tfidf_min_df, tfidf_max_df)
@@ -90,6 +108,16 @@ def run(documents, model, feature_model, identifier_addition, write_output, cate
 
 
 def get_X_and_y(documents, feature_model, categorized, tfidf_max_features, tfidf_min_df, tfidf_max_df):
+    """
+
+    :param documents:
+    :param feature_model:
+    :param categorized:
+    :param tfidf_max_features:
+    :param tfidf_min_df:
+    :param tfidf_max_df:
+    :return:
+    """
     if categorized:
         docs = list(map(lambda x: ' '.join(x[0]), documents))
         y = list(map(lambda x: x[1], documents))
@@ -101,7 +129,7 @@ def get_X_and_y(documents, feature_model, categorized, tfidf_max_features, tfidf
         vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7, stop_words=stopwords.words('english'))
         X = vectorizer.fit_transform(docs)
         X = X.toarray()
-    else:
+    elif feature_model == "TF IDF":
         tfidfconverter = TfidfVectorizer(max_features=tfidf_max_features, min_df=tfidf_min_df, max_df=tfidf_max_df, stop_words=stopwords.words('english'))
         X = tfidfconverter.fit_transform(docs).toarray()
 
