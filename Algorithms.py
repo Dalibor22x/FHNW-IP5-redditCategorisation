@@ -21,7 +21,10 @@ class Algorithms:
             "algorithm": GaussianNB(),
             "tfidf_max_features": 1500,
             "tfidf_min_df": 5,
-            "tfidf_max_df": 0.7
+            "tfidf_max_df": 0.7,
+            "bow_max_features": 1500,
+            "bow_min_df": 5,
+            "bow_max_df": 0.5
         }
         return algorithm
 
@@ -31,7 +34,10 @@ class Algorithms:
             "algorithm": ComplementNB(),
             "tfidf_max_features": 1500,
             "tfidf_min_df": 5,
-            "tfidf_max_df": 0.7
+            "tfidf_max_df": 0.7,
+            "bow_max_features": 700,
+            "bow_min_df": 5,
+            "bow_max_df": 0.5
         }
         return algorithm
 
@@ -41,7 +47,10 @@ class Algorithms:
             "algorithm": MultinomialNB(alpha=6, fit_prior=False),
             "tfidf_max_features": 1500,
             "tfidf_min_df": 6,
-            "tfidf_max_df": 0.5
+            "tfidf_max_df": 0.5,
+            "bow_max_features": 2000,
+            "bow_min_df": 2,
+            "bow_max_df": 0.5
         }
         return algorithm
 
@@ -51,7 +60,10 @@ class Algorithms:
             "algorithm": RandomForestClassifier(bootstrap=False, max_depth=120, max_features="sqrt", min_samples_leaf=2, min_samples_split=2, n_estimators=800),
             "tfidf_max_features": 700,
             "tfidf_min_df": 6,
-            "tfidf_max_df": 0.5
+            "tfidf_max_df": 0.5,
+            "bow_max_features": 2000,
+            "bow_min_df": 6,
+            "bow_max_df": 0.6
         }
         return algorithm
 
@@ -61,7 +73,10 @@ class Algorithms:
             "algorithm": KNeighborsClassifier(),
             "tfidf_max_features": 1500,
             "tfidf_min_df": 5,
-            "tfidf_max_df": 0.7
+            "tfidf_max_df": 0.7,
+            "bow_max_features": 700,
+            "bow_min_df": 9,
+            "bow_max_df": 0.5
         }
         return algorithm
 
@@ -71,7 +86,10 @@ class Algorithms:
             "algorithm": SVC(gamma=0.08838834764831845, C=7),
             "tfidf_max_features": 1500,
             "tfidf_min_df": 2,
-            "tfidf_max_df": 0.5
+            "tfidf_max_df": 0.5,
+            "bow_max_features": 700,
+            "bow_min_df": 2,
+            "bow_max_df": 0.5
         }
         return algorithm
 
@@ -81,7 +99,10 @@ class Algorithms:
             "algorithm": AdaBoostClassifier(),
             "tfidf_max_features": 1500,
             "tfidf_min_df": 5,
-            "tfidf_max_df": 0.7
+            "tfidf_max_df": 0.7,
+            "bow_max_features": 1500,
+            "bow_min_df": 2,
+            "bow_max_df": 0.5
         }
         return algorithm
 

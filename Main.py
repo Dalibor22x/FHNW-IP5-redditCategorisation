@@ -14,12 +14,12 @@ reduced_categories_possibilities = [True]
 algorithms = Algorithms.Algorithms
 algorithms_list = [
     algorithms.multinomial_naive_bayes(),
-    # algorithms.complement_naive_bayes(),
-    # algorithms.gaussian_naive_bayes(),
+    algorithms.complement_naive_bayes(),
+    algorithms.gaussian_naive_bayes(),
     algorithms.random_forest(),
     algorithms.svc(),
-    # algorithms.k_neighbors(),
-    # algorithms.ada_boost()
+    algorithms.k_neighbors(),
+    algorithms.ada_boost()
 ]
 
 def main():
@@ -29,8 +29,9 @@ def main():
         CSVHandler.prepare_subreddits()
 
     # evaluate_best_parameters()
-    evaluate_best_model()
-    # evaluate_best_TFIDF_parameters()
+    # evaluate_best_model()
+    evaluate_best_TFIDF_parameters()
+    evaluate_best_BoW_parameters()
 
 def evaluate_best_model():
     scores = []
@@ -48,7 +49,10 @@ def evaluate_best_model():
                         tfidf_max_features = algorithm["tfidf_max_features"]
                         tfidf_min_df = algorithm["tfidf_min_df"]
                         tfidf_max_df = algorithm["tfidf_max_df"]
-                        scores.append(Algorithm.run(documents, model, feature_model, identifier_addition, False, True, tfidf_max_features, tfidf_min_df, tfidf_max_df))
+                        bow_max_features = algorithm["bow_max_features"]
+                        bow_min_df = algorithm["bow_min_df"]
+                        bow_max_df = algorithm["bow_max_df"]
+                        scores.append(Algorithm.run(documents, model, feature_model, identifier_addition, False, True, tfidf_max_features, tfidf_min_df, tfidf_max_df, bow_max_features, bow_min_df, bow_max_df))
 
     print("\n\n\n\nOverview:")
     scores = sorted(scores, key=lambda s: (-s[1], s[0]))
@@ -70,6 +74,7 @@ def evaluate_best_parameters():
 
 def evaluate_best_TFIDF_parameters():
     documents = CSVHandler.get_document("normal", 2, True)
+    best_scores = []
     scores = []
     feature_model = "TF IDF"
 
@@ -77,20 +82,56 @@ def evaluate_best_TFIDF_parameters():
     tfidf_min_df = [5, 2, 6, 9]
     tfidf_max_df = [0.5, 0.6, 0.7, 0.8, 0.9]
 
-    for mf in tfidf_max_features:
-        for min_df in tfidf_min_df:
-            for max_df in tfidf_max_df:
-                identifier_addition = "text-mode: 'normal', 2-grams, reduced-categories: True, max_features: {}, min_df: {}, max_df: {}".format(mf, min_df, max_df)
-                algorithm = algorithms.random_forest()["algorithm"]
-                scores.append(Algorithm.run(documents, algorithm, feature_model, identifier_addition, True, False, mf, min_df, max_df))
+    for algo in algorithms_list:
+        for mf in tfidf_max_features:
+            for min_df in tfidf_min_df:
+                for max_df in tfidf_max_df:
+                    identifier_addition = "text-mode: 'normal', 2-grams, reduced-categories: True, max_features: {}, min_df: {}, max_df: {}".format(mf, min_df, max_df)
+                    algorithm = algo["algorithm"]
+                    scores.append(Algorithm.run(documents, algorithm, feature_model, identifier_addition, True, False, mf, min_df, max_df, 0, 0, 0))
 
-    print("\n\n\n\nOverview:")
-    scores = sorted(scores, key=lambda s: (-s[1], s[0]))
-    for s in scores:
-        print(s)
+        print("\n\n\n\nOverview:")
+        scores = sorted(scores, key=lambda s: (-s[1], s[0]))
+        for s in scores:
+            print(s)
 
-    print("\nBest model:")
-    print(max(scores, key=itemgetter(1)))
+        print("\nBest model:")
+        print(max(scores, key=itemgetter(1)))
+        best_scores.append(max(scores, key=itemgetter(1)))
+
+    print("Best scores:")
+    print(best_scores)
+
+
+def evaluate_best_BoW_parameters():
+    documents = CSVHandler.get_document("normal", 2, True)
+    best_scores = []
+    scores = []
+    feature_model = "Bag of Words"
+
+    bow_max_features = [1500, 1000, 700, 2000]
+    bow_min_df = [5, 2, 6, 9]
+    bow_max_df = [0.5, 0.6, 0.7, 0.8, 0.9]
+
+    for algo in algorithms_list:
+        for mf in bow_max_features:
+            for min_df in bow_min_df:
+                for max_df in bow_max_df:
+                    identifier_addition = "text-mode: 'normal', 2-grams, reduced-categories: True, max_features: {}, min_df: {}, max_df: {}".format(mf, min_df, max_df)
+                    algorithm = algo["algorithm"]
+                    scores.append(Algorithm.run(documents, algorithm, feature_model, identifier_addition, True, False, 0, 0, 0, mf, min_df, max_df))
+
+        print("\n\n\n\nOverview:")
+        scores = sorted(scores, key=lambda s: (-s[1], s[0]))
+        for s in scores:
+            print(s)
+
+        print("\nBest model:")
+        print(max(scores, key=itemgetter(1)))
+        best_scores.append(max(scores, key=itemgetter(1)))
+
+    print("Best scores:")
+    print(best_scores)
 
 
 if __name__ == '__main__':

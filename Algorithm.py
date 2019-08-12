@@ -7,7 +7,7 @@ import csv
 import CSVHandler
 
 
-def run(documents, model, feature_model, identifier_addition, write_output, predict_uncategorized, tfidf_max_features, tfidf_min_df, tfidf_max_df):
+def run(documents, model, feature_model, identifier_addition, write_output, predict_uncategorized, tfidf_max_features, tfidf_min_df, tfidf_max_df, bow_max_features, bow_min_df, bow_max_df):
     """
 
     TODO: Describe types etc.
@@ -29,7 +29,7 @@ def run(documents, model, feature_model, identifier_addition, write_output, pred
     identifier = "Algorithm: '{}', feature-model: '{}', {}".format(model.__class__.__name__, feature_model, identifier_addition)
     print("\n\nRunning: '{}'".format(identifier))
 
-    X, y, docs = get_X_and_y(documents, feature_model, True, tfidf_max_features, tfidf_min_df, tfidf_max_df)
+    X, y, docs = get_X_and_y(documents, feature_model, True, tfidf_max_features, tfidf_min_df, tfidf_max_df, bow_max_features, bow_min_df, bow_max_df)
     out_of_sample_threshold = len(X) - 200
 
     out_of_sample_X = X[out_of_sample_threshold:]
@@ -107,7 +107,7 @@ def run(documents, model, feature_model, identifier_addition, write_output, pred
     return (identifier, np.mean(scores))
 
 
-def get_X_and_y(documents, feature_model, categorized, tfidf_max_features, tfidf_min_df, tfidf_max_df):
+def get_X_and_y(documents, feature_model, categorized, tfidf_max_features, tfidf_min_df, tfidf_max_df, bow_max_features, bow_min_df, bow_max_df):
     """
 
     :param documents:
@@ -126,7 +126,7 @@ def get_X_and_y(documents, feature_model, categorized, tfidf_max_features, tfidf
         y = []
 
     if feature_model == "Bag of Words":
-        vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7, stop_words=stopwords.words('english'))
+        vectorizer = CountVectorizer(max_features=bow_max_features, min_df=bow_min_df, max_df=bow_max_df, stop_words=stopwords.words('english'))
         X = vectorizer.fit_transform(docs)
         X = X.toarray()
     elif feature_model == "TF IDF":
