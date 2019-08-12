@@ -4,13 +4,13 @@ import Algorithms
 import Algorithm
 from operator import itemgetter
 
-# text_modes = ["normal", "title_only", "text_only"]
-text_modes = ["normal"]
-# feature_models = ["Bag of Words", "TF IDF"]
-feature_models = ["TF IDF"]
+text_modes = ["normal", "title_only", "text_only"]
+# text_modes = ["normal"]
+feature_models = ["Bag of Words", "TF IDF"]
+# feature_models = ["TF IDF"]
 possible_n_grams = [1, 2, 3]
-# reduced_categories_possibilities = [True, False]
-reduced_categories_possibilities = [True]
+reduced_categories_possibilities = [True, False]
+# reduced_categories_possibilities = [True]
 algorithms = Algorithms.Algorithms
 algorithms_list = [
     algorithms.multinomial_naive_bayes(),
@@ -29,9 +29,9 @@ def main():
         CSVHandler.prepare_subreddits()
 
     # evaluate_best_parameters()
-    # evaluate_best_model()
-    evaluate_best_TFIDF_parameters()
-    evaluate_best_BoW_parameters()
+    evaluate_best_model()
+    # evaluate_best_TFIDF_parameters()
+    # evaluate_best_BoW_parameters()
 
 def evaluate_best_model():
     scores = []
