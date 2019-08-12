@@ -19,9 +19,9 @@ class Algorithms:
     def gaussian_naive_bayes():
         algorithm = {
             "algorithm": GaussianNB(),
-            "tfidf_max_features": 1500,
-            "tfidf_min_df": 5,
-            "tfidf_max_df": 0.7,
+            "tfidf_max_features": 700,
+            "tfidf_min_df": 6,
+            "tfidf_max_df": 0.5,
             "bow_max_features": 1500,
             "bow_min_df": 5,
             "bow_max_df": 0.5
@@ -32,9 +32,9 @@ class Algorithms:
     def complement_naive_bayes():
         algorithm = {
             "algorithm": ComplementNB(),
-            "tfidf_max_features": 1500,
-            "tfidf_min_df": 5,
-            "tfidf_max_df": 0.7,
+            "tfidf_max_features": 2000,
+            "tfidf_min_df": 2,
+            "tfidf_max_df": 0.5,
             "bow_max_features": 700,
             "bow_min_df": 5,
             "bow_max_df": 0.5
@@ -45,7 +45,7 @@ class Algorithms:
     def multinomial_naive_bayes():
         algorithm = {
             "algorithm": MultinomialNB(alpha=6, fit_prior=False),
-            "tfidf_max_features": 1500,
+            "tfidf_max_features": 1000,
             "tfidf_min_df": 6,
             "tfidf_max_df": 0.5,
             "bow_max_features": 2000,
@@ -58,9 +58,9 @@ class Algorithms:
     def random_forest():
         algorithm = {
             "algorithm": RandomForestClassifier(bootstrap=False, max_depth=120, max_features="sqrt", min_samples_leaf=2, min_samples_split=2, n_estimators=800),
-            "tfidf_max_features": 700,
-            "tfidf_min_df": 6,
-            "tfidf_max_df": 0.5,
+            "tfidf_max_features": 2000,
+            "tfidf_min_df": 2,
+            "tfidf_max_df": 0.8,
             "bow_max_features": 2000,
             "bow_min_df": 6,
             "bow_max_df": 0.6
@@ -72,8 +72,8 @@ class Algorithms:
         algorithm = {
             "algorithm": KNeighborsClassifier(),
             "tfidf_max_features": 1500,
-            "tfidf_min_df": 5,
-            "tfidf_max_df": 0.7,
+            "tfidf_min_df": 2,
+            "tfidf_max_df": 0.5,
             "bow_max_features": 700,
             "bow_min_df": 9,
             "bow_max_df": 0.5
@@ -84,8 +84,8 @@ class Algorithms:
     def svc():
         algorithm = {
             "algorithm": SVC(gamma=0.08838834764831845, C=7),
-            "tfidf_max_features": 1500,
-            "tfidf_min_df": 2,
+            "tfidf_max_features": 1000,
+            "tfidf_min_df": 6,
             "tfidf_max_df": 0.5,
             "bow_max_features": 700,
             "bow_min_df": 2,
@@ -97,9 +97,9 @@ class Algorithms:
     def ada_boost():
         algorithm = {
             "algorithm": AdaBoostClassifier(),
-            "tfidf_max_features": 1500,
-            "tfidf_min_df": 5,
-            "tfidf_max_df": 0.7,
+            "tfidf_max_features": 700,
+            "tfidf_min_df": 9,
+            "tfidf_max_df": 0.5,
             "bow_max_features": 1500,
             "bow_min_df": 2,
             "bow_max_df": 0.5
