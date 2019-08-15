@@ -151,6 +151,19 @@ class Algorithms:
 
     @staticmethod
     def hyperparameter_tuning(model, param_grid, documents, feature_model):
+        """
+        Perform a GridSearch on the given model with the given parameter grid and print the best parameter combination.
+
+        :param model: The sklearn model to be tuned.
+
+        :param param_grid: A dictionary of parameters to be used for tuning. The key of the dictionary must be the name
+                           of the parameter and the value is a list of values to be tested.
+
+        :param documents: A list of preprocessed documents used for training and testing the model.
+
+        :param feature_model: A String being either 'Bag of Words' or 'TF IDF' used for vectorizing the document.
+        """
+
         grid = GridSearchCV(estimator=model, param_grid=param_grid, cv=10, n_jobs=-1, verbose=2)
 
         docs = list(map(lambda x: ' '.join(x[0]), documents))
@@ -160,7 +173,7 @@ class Algorithms:
             vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7, stop_words=stopwords.words('english'))
             X = vectorizer.fit_transform(docs)
             X = X.toarray()
-        else:
+        elif feature_model == "TF IDF":
             tfidfconverter = TfidfVectorizer(max_features=1500, min_df=5, max_df=0.7, stop_words=stopwords.words('english'))
             X = tfidfconverter.fit_transform(docs).toarray()
 
@@ -171,6 +184,21 @@ class Algorithms:
 
     @staticmethod
     def random_hyperparameter_tuning(model, param_grid, documents, feature_model):
+        """
+        Perform a RandomizedSearch on the given model with the given parameter grid and print the best parameter combination.
+        Only shows an approximation of the best parameter combination. This method should be used to narrow down the
+        range of possible parameter values and then perform a GridSearch using the method 'hyperparameter_tuning'.
+
+        :param model: The sklearn model to be tuned.
+
+        :param param_grid: A dictionary of parameters to be used for tuning. The key of the dictionary must be the name
+                           of the parameter and the value is a list of values to be tested.
+
+        :param documents: A list of preprocessed documents used for training and testing the model.
+
+        :param feature_model: A String being either 'Bag of Words' or 'TF IDF' used for vectorizing the document.
+        """
+
         grid = RandomizedSearchCV(estimator=model, param_distributions=param_grid, cv=10, n_jobs=-1, verbose=2)
 
         docs = list(map(lambda x: ' '.join(x[0]), documents))
@@ -180,7 +208,7 @@ class Algorithms:
             vectorizer = CountVectorizer(max_features=1500, min_df=5, max_df=0.7, stop_words=stopwords.words('english'))
             X = vectorizer.fit_transform(docs)
             X = X.toarray()
-        else:
+        elif feature_model == "TF IDF":
             tfidfconverter = TfidfVectorizer(max_features=1500, min_df=5, max_df=0.7, stop_words=stopwords.words('english'))
             X = tfidfconverter.fit_transform(docs).toarray()
 

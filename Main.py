@@ -5,12 +5,9 @@ import Algorithm
 from operator import itemgetter
 
 text_modes = ["normal", "title_only", "text_only"]
-# text_modes = ["normal"]
 feature_models = ["Bag of Words", "TF IDF"]
-# feature_models = ["TF IDF"]
 possible_n_grams = [1, 2, 3]
 reduced_categories_possibilities = [True, False]
-# reduced_categories_possibilities = [True]
 algorithms = Algorithms.Algorithms
 algorithms_list = [
     algorithms.multinomial_naive_bayes(),
@@ -22,26 +19,28 @@ algorithms_list = [
     algorithms.ada_boost()
 ]
 
+
 def main():
-    # If import is needed
+    # Check if import is needed
     if os.path.exists("data/import_me.tsv"):
-        print("Importing new categorised data sets")
-        CSVHandler.prepare_subreddits()
+        print("Importing new dataset")
+        CSVHandler.import_new_dataset()
 
     # evaluate_best_parameters()
     evaluate_best_model()
     # evaluate_best_TFIDF_parameters()
     # evaluate_best_BoW_parameters()
 
+
 def evaluate_best_model():
     scores = []
 
+    # Go through all possible parameters and run the algorithm in order to evaluate the best model
     for reduced_categories in reduced_categories_possibilities:
         for text_mode in text_modes:
             for n in possible_n_grams:
                 documents = CSVHandler.get_document(text_mode, n, reduced_categories)
-                identifier_addition = "text-mode: '{}', {}-grams, reduced-categories: {}".format(text_mode, n,
-                                                                                                 reduced_categories)
+                identifier_addition = "text-mode: '{}', {}-grams, reduced-categories: {}".format(text_mode, n, reduced_categories)
 
                 for feature_model in feature_models:
                     for algorithm in algorithms_list:
@@ -52,8 +51,9 @@ def evaluate_best_model():
                         bow_max_features = algorithm["bow_max_features"]
                         bow_min_df = algorithm["bow_min_df"]
                         bow_max_df = algorithm["bow_max_df"]
-                        scores.append(Algorithm.run(documents, model, feature_model, identifier_addition, False, True, tfidf_max_features, tfidf_min_df, tfidf_max_df, bow_max_features, bow_min_df, bow_max_df))
+                        scores.append(Algorithm.run(documents, model, feature_model, identifier_addition, True, False, tfidf_max_features, tfidf_min_df, tfidf_max_df, bow_max_features, bow_min_df, bow_max_df))
 
+    # Print models sorted by accuracy
     print("\n\n\n\nOverview:")
     scores = sorted(scores, key=lambda s: (-s[1], s[0]))
     for s in scores:
@@ -90,6 +90,7 @@ def evaluate_best_TFIDF_parameters():
                     algorithm = algo["algorithm"]
                     scores.append(Algorithm.run(documents, algorithm, feature_model, identifier_addition, True, False, mf, min_df, max_df, 0, 0, 0))
 
+        # Print models sorted by accuracy
         print("\n\n\n\nOverview:")
         scores = sorted(scores, key=lambda s: (-s[1], s[0]))
         for s in scores:
@@ -121,6 +122,7 @@ def evaluate_best_BoW_parameters():
                     algorithm = algo["algorithm"]
                     scores.append(Algorithm.run(documents, algorithm, feature_model, identifier_addition, True, False, 0, 0, 0, mf, min_df, max_df))
 
+        # Print models sorted by accuracy
         print("\n\n\n\nOverview:")
         scores = sorted(scores, key=lambda s: (-s[1], s[0]))
         for s in scores:
