@@ -59,6 +59,7 @@ def evaluate_best_model():
     for s in scores:
         print(s)
 
+    # Only the best model when considering accuracy, which is not the case for this project!
     print("\nBest model:")
     print(max(scores, key=itemgetter(1)))
 
